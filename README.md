@@ -1,8 +1,18 @@
+<div align="center">
+
 # WebLINX
 
-[Click here to access the official WebLINX website](https://mcgill-nlp.github.io/weblinx)
+[**💻Code**](https://github.com/McGill-NLP/WebLINX) | **📄Paper (TBA)** | [**🌐Homepage**](https://mcgill-nlp.github.io/weblinx) | [**🤗Huggingface Data**](https://huggingface.co/datasets/McGill-NLP/WebLINX) | [💻Explorer App](https://huggingface.co/spaces/McGill-NLP/weblinx-explorer) | **🐦Tweets (TBA)** |
+| :--: | :--: | :--: | :--: | :--: | :--: |
 
-![image of the web navigation process](./assets/webnav.demo.svg)
+
+> **[WebLINX: Real-World Website Navigation with Multi-Turn Dialogue](https://mcgill-nlp.github.io/weblinx)**\
+> *[Xing Han Lù*](https://xinghanlu.com), [Zdeněk Kasner*](https://kasnerz.github.io/), [Siva Reddy](https://sivareddy.in)*\
+> _\*Equal contribution_
+
+<img src="./assets/webnav.demo.svg" width="80%" alt="Sample conversation between a user and an agent" />
+
+</div>
 
 ### Installation
 
@@ -10,6 +20,15 @@
 pip install weblinx
 ```
 
-### Usage
+### Library Usage
 
 Check out our [documentation](https://mcgill-nlp.github.io/weblinx/docs) for more information on how to use WebLINX.
+
+
+### Modeling
+
+Coming soon (mid-February)
+
+### Evaluation
+
+Coming soon (mid-February)
