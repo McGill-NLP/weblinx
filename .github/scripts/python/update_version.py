@@ -23,7 +23,6 @@ def main():
         "--path",
         type=Path,
         help="The path to the package's version file.",
-        default="statcan_dialogue_dataset/version.py",
     )
     args = parser.parse_args()
 

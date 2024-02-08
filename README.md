@@ -17,7 +17,19 @@
 ### Installation
 
 ```bash
+# Install the base package
 pip install weblinx
+
+# Install all dependencies
+pip install weblinx[all]
+
+# Install specific dependencies for...
+# ...processing HTML
+pip install weblinx[processing]
+# ...video processing
+pip install weblinx[video]
+# ...development
+pip install weblinx[dev]
 ```
 
 ### Library Usage
