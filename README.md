@@ -7,7 +7,8 @@
 
 
 > **[WEBLINX: Real-World Website Navigation with Multi-Turn Dialogue](https://arxiv.org/abs/2304.01412)**\
-> *[Xing Han Lù](https://xinghanlu.com), [Zdeněk Kasner](https://kasnerz.github.io/), [Siva Reddy](https://sivareddy.in)*
+> *[Xing Han Lù*](https://xinghanlu.com), [Zdeněk Kasner*](https://kasnerz.github.io/), [Siva Reddy](https://sivareddy.in)*\
+> _\*Equal contribution_
 
 <img src="./assets/webnav.demo.svg" width="80%" alt="Sample conversation between a user and an agent" />
 
