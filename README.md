@@ -2,8 +2,8 @@
 
 # WebLINX
 
-[**💻Code**](https://github.com/McGill-NLP/WebLINX) | **📄Paper (TBA)** | [**🌐Homepage**](https://mcgill-nlp.github.io/weblinx) | [**🤗Huggingface Dataset**](https://huggingface.co/datasets/McGill-NLP/WebLINX) | **🐦Tweets (TBA)** |
-| :--: | :--: | :--: | :--: | :--: |
+[**💻Code**](https://github.com/McGill-NLP/WebLINX) | **📄Paper (TBA)** | [**🌐Homepage**](https://mcgill-nlp.github.io/weblinx) | [**🤗Huggingface Data**](https://huggingface.co/datasets/McGill-NLP/WebLINX) | [💻Explorer App](https://huggingface.co/spaces/McGill-NLP/weblinx-explorer) | **🐦Tweets (TBA)** |
+| :--: | :--: | :--: | :--: | :--: | :--: |
 
 
 > **[WebLINX: Real-World Website Navigation with Multi-Turn Dialogue](https://mcgill-nlp.github.io/weblinx)**\
