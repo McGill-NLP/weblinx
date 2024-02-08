@@ -2,7 +2,7 @@
 
 [Click here to access the official WebLINX website](https://mcgill-nlp.github.io/weblinx)
 
-<img src="./assets/webnav.demo.svg" width="100">
+<img src="./assets/webnav.demo.svg" width="80%">
 
 ### Installation
 
