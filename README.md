@@ -6,7 +6,7 @@
 | :--: | :--: | :--: | :--: | :--: |
 
 
-> **[WEBLINX: Real-World Website Navigation with Multi-Turn Dialogue](https://arxiv.org/abs/2304.01412)**\
+> **[WebLINX: Real-World Website Navigation with Multi-Turn Dialogue](https://mcgill-nlp.github.io/weblinx)**\
 > *[Xing Han Lù*](https://xinghanlu.com), [Zdeněk Kasner*](https://kasnerz.github.io/), [Siva Reddy](https://sivareddy.in)*\
 > _\*Equal contribution_
 
@@ -20,6 +20,15 @@
 pip install weblinx
 ```
 
-### Usage
+### Library Usage
 
 Check out our [documentation](https://mcgill-nlp.github.io/weblinx/docs) for more information on how to use WebLINX.
+
+
+### Modeling
+
+Coming soon (mid-February)
+
+### Evaluation
+
+Coming soon (mid-February)
