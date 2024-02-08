@@ -8,31 +8,35 @@ on:
     types: [created]
 
 jobs:
-  deploy:
+  bump-version-and-publish:
+    name: Bump version and upload release to PyPI
 
     runs-on: ubuntu-latest
+    permissions:
+      # IMPORTANT: this permission is mandatory for trusted publishing
+      id-token: write
 
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.8'
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install setuptools wheel twine
+        python-version: '3.10'
     
     - name: Update version.py with release tag
       env:
         RELEASE_TAG: ${{ github.event.release.tag_name }}
       run: |
-        python statcan_dialogue_dataset/cli/update_version.py --version $RELEASE_TAG
+        python .github/scripts/python/update_version.py --version $RELEASE_TAG --path "weblinx/version.py"
     
-    - name: Build and publish
-      env:
-        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install setuptools wheel twine
+    
+    - name: Build package
       run: |
         python setup.py sdist bdist_wheel
-        twine upload dist/*
+    
+    - name: Publish package distributions to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
