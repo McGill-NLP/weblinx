@@ -28,21 +28,20 @@ title: "WebLINX"
 excerpt: "Real-world website navigation with multi-turn dialogue"
 ---
 
-<div style="display: flex; justify-content: space-between; width: 100%; max-width: 700px; margin: 0 auto;">
-  <a href="https://xinghanlu.com">Xing Han Lù*</a>
-  <a href="https://kasnerz.github.io/">Zdeněk Kasner*</a>
-  <a href="https://sivareddy.in/">Siva Reddy</a>
+<div style="width: 90%; max-width: 900px; margin: auto; text-align: center; font-size: 18pt">
+  <div style="display: flex; justify-content: space-between;">
+    <a href="https://xinghanlu.com">Xing Han Lù*</a>
+    <a href="https://kasnerz.github.io/">Zdeněk Kasner*</a>
+    <a href="https://sivareddy.in/">Siva Reddy</a>
+  </div>
+  <div style="margin-top: 1em; margin-bottom: 3em"><em>*equal contribution</em></div>
 </div>
 
-<div style="display: flex; justify-content: center; font-style: italic; margin-bottom: 1em">
-* equal contribution
-</div>
+
 <!-- Authors can be improved with pictures similar to /people -->
 
-<div style="display: flex; justify-content: center;">
-  <img src="{{ '/assets/images/webnav.demo.svg' | relative_url }}" width="70%">
-</div>
-<!-- The thumbnail should be replaced with a carousel, similar to mind2web -->
+<img src="{{ '/assets/images/webnav.demo.svg' | relative_url }}" style="width: 90%; max-width: 900px; align-content: center; margin: auto; display: flex">
+
 
 ### About WebLINX
 
@@ -101,19 +100,23 @@ test_web = load_dataset("McGill-NLP/weblinx", split="test_web")
 
 They can be directly used with LLMs or instruction-tuned text models.
 
-### What does the dataset look like? Do you have a demo?
 
-If you want to take a look at the dataset before diving in, check out the [WebLINX Explorer on Huggingface Spaces](https://huggingface.co/spaces/McGill-NLP/weblinx-explorer). It has a nice interface to explore the dataset and see the interactions.
+## How can we explore the dataset?
 
-<!-- Use html to display webm video
-<video controls autoplay loop>
-  <source src="{{ '/assets/WeblinxExplorereDemo.webm' | relative_url }}" type="video/webm">
+We provide the WebLINX Explorer, a tool to explore the dataset and see the interactions we have collected. You can use it to take a look at the dataset before diving in.
+
+**[Check out the WebLINX Explorer on Huggingface Spaces](https://huggingface.co/spaces/McGill-NLP/weblinx-explorer)**
+
+<video width="100%" controls autoplay loop muted>
+  <source src="{{ '/assets/videos/WeblinxExplorerDemo.webm' | relative_url }}" type="video/webm">
   Your browser does not support the video tag.
-</video> -->
+</video>
 
 ### What if I want to download the raw data (HTML, screenshots, etc.)?
 
-If you are interested in the full data, the easiest way to download the raw dataset is the use the `huggingface_hub` library with `snapshot_download`. We show you how in the [doc's prerequisite section](/docs#prerequisites).
+If you are interested in the full data, the easiest way to download the raw dataset is the use the `huggingface_hub` library with `snapshot_download`. We show you how in the [doc's prerequisite section]({{'/docs/#prerequisites' | relative_url }}).
+
+
 
 If you want to learn the best ways process the raw dataset (prune HTML, format history, add instructions), you can use our `weblinx` Python library. It has tons of classes and functions to help you work with the dataset and build models. You can install it using pip:
 
@@ -121,7 +124,7 @@ If you want to learn the best ways process the raw dataset (prune HTML, format h
 pip install weblinx
 ```
 
-Please take a look at the [library documentation](/docs) for more information on how to use it.
+Please take a look at the [library documentation]({{'/docs/' | relative_url }}) for more information on how to use it.
 
 
 ### How can we use WebLINX to train agents?
@@ -132,7 +135,7 @@ First, we convert the HTML page into a compact representation. To do this, we us
 
 We pass HTML, instructions, history and images to an __action model__ (which can be a LLM or a multimodal model). The *action model* generates a string that represents the next action to take (e.g. click button, inserting text in form, load new page, respond to user). That string is parsed into a structured form that can be executed.
 
-We experiment with 19 action models, ranging from smaller models (Flan-T5-MindAct, Pix2Act) to large chat-based models (LLaMA-13B, GPT-4-turbo) and multimodal models (Fuyu-8B, GPT-4V). You can find the results in the [leaderboard](/leaderboard).
+We experiment with 19 action models, ranging from smaller models (Flan-T5-MindAct, Pix2Act) to large chat-based models (LLaMA-13B, GPT-4-turbo) and multimodal models (Fuyu-8B, GPT-4V). You can find the results in the [leaderboard]({{'/leaderboard' | relative_url }}).
 
 <!-- There should be a card of 5 models here (MindAct, Pix2Act, Fuyu-8B, LLaMA-13B, GPT-4V) with links to the original papers of those models. -->
 

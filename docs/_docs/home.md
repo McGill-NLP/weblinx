@@ -6,11 +6,15 @@ sidebar:
   nav: sidebar-docs  # See /docs/_data/navigation.yml
 ---
 
-In this page, you can find documentation about the project.
+If you want a simple installation, please take a look at the [`WebLINX` Huggingface Dataset](https://huggingface.co/datasets/McGill-NLP/WebLINX) -- it will show you how to download the dataset and use it with the `datasets` library.
+
+If you want to work with the full data (containing raw files, which require more complex processing), you will find that a specialized library will be helpful. 
+
+In this page, you can find documentation about the `WebLINX` Python library we developed for this purpose.
 
 ## Installation
 
-To install the project, you can use pip:
+To install the library, you can use pip:
 
 ```bash
 pip install weblinx
@@ -33,32 +37,39 @@ Now, you can download the dataset:
 ```python
 from huggingface_hub import snapshot_download
 
-# Other options: allow_patterns = ["*.json", "*.html", "*.png", "*.mp4"]
-allow_patterns = ["*.json"]
+patterns = ["*.json"]
+# Other options: 
+# patterns = ["*.json", "*.html", "*.png", "*.mp4"]
 
 # Download a subset of the dataset, or...
-snapshot_download(repo_id="McGill-NLP/WebLINX", allow_patterns=allow_patterns, repo_type="dataset", local_dir="./data/webtasks")
+snapshot_download(
+    repo_id="McGill-NLP/WebLINX-full", repo_type="dataset", local_dir="./wl_data", allow_patterns=patterns
+)
+
 # ... download the entire dataset
-snapshot_download(repo_id="McGill-NLP/WebLINX", repo_type="dataset", local_dir="./data/webtasks")
+snapshot_download(
+    repo_id="McGill-NLP/WebLINX-full", repo_type="dataset", local_dir="./wl_data"
+)
 ```
 
-## Quickstart
+## Using the WebLINX library
 
-Now that you have the dataset, you can use the `weblinx` library to process it:
+Now that you have the dataset, you can use the `weblinx` library to process the full data:
 
 ```python
 from pathlib import Path
 import weblinx as wl
 
 
-save_dir = Path("./data/webtasks")
-split_path = save_dir / "splits.json"
+wl_dir = Path("./wl_data")
+split_path = wl_dir / "splits.json"
 
 # Load the name of the demonstrations in the training split
-demo_names = wl.utils.load_demo_names_in_split(split_path, split='train')  # or 'valid' or 'test-iid'
+demo_names = wl.utils.load_demo_names_in_split(split_path, split='train') 
+# or 'valid' or 'indomain'
 
 # Load the demonstrations
-demos = [wl.Demonstration(name) for name in names]
+demos = [wl.Demonstration(name, base_dir=wl_dir) for name in names]
 
 # Select a demo to work with
 demo = demos[0]
@@ -72,12 +83,12 @@ turns = replay.filter_by_intents(
 )
 
 # Only keep the turns that have a good screenshot (i.e., the screenshot is not empty)
-turns = filter_turns(
+turns = wl.filter_turns(
     turns, lambda t: t.has_screenshot() and t.get_screenshot_status() == "good"
 )
 
 # Remove chat turns where the speaker is not the navigator (e.g. if you want to train a model to predict the next action)
-turns = filter_turns(
+turns = wl.filter_turns(
     turns,
     lambda turn: not (
         turn.type == "chat" and turn.get("speaker") != "navigator"
@@ -85,11 +96,11 @@ turns = filter_turns(
 )
 ```
 
-As you can see, the core `weblinx` has many useful functions to process the dataset, as well as various useful classes to represent the data (e.g. `Demonstration`, `Replay`, `Turn`). You can find more information about the library in the [documentation of the core WebLINX module](/docs/core/).
+As you can see, the core `weblinx` has many useful functions to process the dataset, as well as various useful classes to represent the data (e.g. `Demonstration`, `Replay`, `Turn`). You can find more information about the library in the [documentation of the core WebLINX module]({{'/docs/core/' | relative_url }}).
 
-You can also take a look at some useful `processing` functions in the [documentation of the processing module](/docs/processing/), and some useful `utils` functions in the [documentation of the utils module](/docs/utils/).
+You can also take a look at some useful `processing` functions in the [documentation of the processing module]({{'/docs/processing/' | relative_url }}), and some useful `utils` functions in the [documentation of the utils module]({{'/docs/utils/' | relative_url }}).
 
-## Examples for training
+## Examples for Training Action Model
 
 Here's an example of how to use the `weblinx` library to build input records for training the model:
 
@@ -98,14 +109,14 @@ from pathlib import Path
 import weblinx as wl
 
 
-save_dir = Path("./data/webtasks")
-split_path = save_dir / "splits.json"
+wl_dir = Path("./wl_data")
+split_path = wl_dir / "splits.json"
 
 # Load the name of the demonstrations in the training split
 demo_names = wl.utils.load_demo_names_in_split(split_path, split='train')  # or 'valid' or 'test-iid'
 
 # Load the demonstrations
-demos = [wl.Demonstration(name) for name in names]
+demos = [wl.Demonstration(name, base_dir=wl_dir) for name in names]
 
 # Load candidates generated by DMR
 candidates = load_candidate_elements(path='path/to/candidates.json')
