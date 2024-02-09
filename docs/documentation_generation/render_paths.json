@@ -1,0 +1,11 @@
+{
+    "docs/_docs/weblinx.md": [
+        "weblinx/__init__.py"
+    ],
+    "docs/_docs/weblinx/utils.md": [
+        "weblinx/utils/*.py"
+    ],
+    "docs/_docs/weblinx/processing.md": [
+        "weblinx/processing/*.py"
+    ]
+}
