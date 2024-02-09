@@ -2,7 +2,7 @@
 
 # WebLINX
 
-[**💻Code**](https://github.com/McGill-NLP/WebLINX) | **📄Paper (TBA)** | [**🌐Homepage**](https://mcgill-nlp.github.io/weblinx) | [**🤗Huggingface Data**](https://huggingface.co/datasets/McGill-NLP/WebLINX) | [💻Explorer App](https://huggingface.co/spaces/McGill-NLP/weblinx-explorer) | **🐦Tweets (TBA)** |
+[**💻Code**](https://github.com/McGill-NLP/WebLINX) | [**📄Paper**](https://arxiv.org/abs/2402.05930) | [**🌐Homepage**](https://mcgill-nlp.github.io/weblinx) | [**🤗Huggingface Data**](https://huggingface.co/datasets/McGill-NLP/WebLINX) | [💻Explorer App](https://huggingface.co/spaces/McGill-NLP/weblinx-explorer) | **🐦Tweets (TBA)** |
 | :--: | :--: | :--: | :--: | :--: | :--: |
 
 

@@ -5,8 +5,8 @@ header:
     # overlay_color: rgb(237, 27, 47)
     overlay_color: rgb(180, 27, 47)
     actions:
-        - label: "Paper (TBD)"
-          url: https://arxiv.org/
+        - label: "Paper"
+          url: https://arxiv.org/abs/2402.05930
           icon: "fas fa-book"
         - label: "Code"
           url: "https://github.com/McGill-NLP/WebLINX"
