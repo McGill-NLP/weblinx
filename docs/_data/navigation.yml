@@ -1,0 +1,19 @@
+main:
+  - title: "Home"
+    url: /
+  - title: "Leaderboard"
+    url: /leaderboard/
+  - title: "Docs"
+    url: /docs/
+  - title: "Contact"
+    url: /contact/
+
+sidebar-docs:  # See "include" in /_config.yml and /docs/_docs
+  - title: "Home"
+    url: /docs/
+  - title: "Core"
+    url: /docs/core/
+  - title: "Processing"
+    url: /docs/processing/
+  - title: "Utils"
+    url: /docs/utils/
