@@ -1,6 +1,6 @@
 ---
 title: "WebLINX"
-permalink: /docs/core
+permalink: /docs/core/
 toc_label: "Table of Contents"
 layout: single
 ---
