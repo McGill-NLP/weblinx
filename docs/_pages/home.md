@@ -60,7 +60,7 @@ Our benchmark covers a broad range of patterns on over 150 real-world websites a
 
 ### What is *conversational web navigation*?
 
-We propose the problem of *conversational web navigation*, where a digital agent controls a web browser and follows user instructions to solve real-world tasks in a multi-turn dialogue fashion.
+We propose the problem of *conversational web navigation*, where a digital agent controls a web browser and follows user instructions to solve real-world tasks in a multi-turn dialogue fashion. To accomplish this, agents can learn from expert demonstrations, as shown below:
 
 <div style="display: flex; justify-content: space-between; margin-bottom: 1em;">
   <video loop autoplay muted controls style="width: 72%; height: auto; margin-right: 2%;">
