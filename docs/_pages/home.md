@@ -92,7 +92,7 @@ from datasets import load_dataset
 
 # Load the training, validation and test splits
 train = load_dataset("McGill-NLP/weblinx", split="train")
-val = load_dataset("McGill-NLP/weblinx", split="valid")
+val = load_dataset("McGill-NLP/weblinx", split="validation")
 test = load_dataset("McGill-NLP/weblinx", split="test")
 
 # Load one of the 4 out-of-domain splits (test_web, test_vis, test_geo, test_cat)
