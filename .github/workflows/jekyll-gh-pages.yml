@@ -28,6 +28,22 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '2.7' # Choose the Ruby version that matches your local development environment
+
+      - name: Install Jekyll and dependencies
+        run: |
+          gem install jekyll -v 4.2.2
+          gem install bundler
+          bundle install
+
+      - name: Build the Jekyll site
+        run: |
+          bundle exec jekyll build --source ./docs --destination ./_site
+      
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Build with Jekyll
