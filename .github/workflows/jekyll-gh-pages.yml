@@ -34,9 +34,9 @@ jobs:
         with:
           ruby-version: '2.7' # Choose the Ruby version that matches your local development environment
 
-      - name: Install Jekyll and dependencies
-        run: |
-          bundle install
+      # - name: Install Jekyll and dependencies
+      #   run: |
+      #     bundle install
 
       - name: Build the Jekyll site
         run: |
