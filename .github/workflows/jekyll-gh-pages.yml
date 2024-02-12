@@ -24,8 +24,6 @@ concurrency:
 jobs:
   # Build job
   build:
-    environment:
-      name: github-pages
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -35,6 +33,9 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '2.7' # Choose the Ruby version that matches your local development environment
+
+      - name: Install Bundler
+        run: gem install bundler -v 2.4.22
 
       - name: Build the Jekyll site
         run: |
