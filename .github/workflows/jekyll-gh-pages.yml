@@ -36,7 +36,6 @@ jobs:
 
       - name: Install Jekyll and dependencies
         run: |
-          gem install jekyll -v 4.2.2
           gem install bundler
           bundle install
 
