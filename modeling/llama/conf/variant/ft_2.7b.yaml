@@ -1,0 +1,11 @@
+# @package _global_
+project_name: llama_ft
+
+model:
+  # This is meant to be run on 1 gpu with 48GB+ memory (e.g., A6000)
+  use_flash_attention_2: True
+  name: princeton-nlp/Sheared-LLaMA-2.7B
+
+eval:
+  batch_size_per_device: 8
+  load_from_save_dir: True

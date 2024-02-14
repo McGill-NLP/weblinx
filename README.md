@@ -40,8 +40,19 @@ Check out our [documentation](https://mcgill-nlp.github.io/weblinx/docs) for mor
 
 ### Modeling
 
-Coming soon (mid-February)
+Our modeling code is separate from the `weblinx` library, but requires it as a dependency. You can install the modeling code by running:
+
+```bash
+# First, install the base package
+pip install weblinx
+
+# THen, clone this repo
+git clone https://github.com/McGill-NLP/weblinx
+cd weblinx/modeling
+```
+
+For the rest of the instructions, please take a look at the [modeling README](./modeling/README.md).
 
 ### Evaluation
 
-Coming soon (mid-February)
+Coming soon!

@@ -1,0 +1,18 @@
+# @package _global_
+project_name: llama_ft
+
+model:
+  # This is meant to be run on 4 gpus with 48GB+ memory (e.g., A6000)
+  use_flash_attention_2: True
+  name: meta-llama/Llama-2-7b-chat-hf
+
+train:  
+  # 4 (# gpus) * 4 (accum steps) * 1 (bsize) = 16 (batch size)
+  batch_size_per_device: 4
+  gradient_accumulation_steps: 1
+  use_accelerator_device_map: True
+  use_auto_device_map: False
+
+eval:
+  batch_size_per_device: 8
+  load_from_save_dir: True
