@@ -56,3 +56,17 @@ For the rest of the instructions, please take a look at the [modeling README](./
 ### Evaluation
 
 Coming soon!
+
+### Citations
+
+If you use this library, please cite our work using the following:
+```bibtex
+@misc{lù2024weblinx,
+      title={WebLINX: Real-World Website Navigation with Multi-Turn Dialogue}, 
+      author={Xing Han Lù and Zdeněk Kasner and Siva Reddy},
+      year={2024},
+      eprint={2402.05930},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
+```
