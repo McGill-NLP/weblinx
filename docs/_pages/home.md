@@ -158,10 +158,11 @@ You will need Selenium or Pupeteer to control the browser (take screenshot, grab
 If you use our dataset, code, or models, please use the following `bibtex` citation entry:
 
 ```bibtex
-@misc{lu-2024-weblinx,
-      title={WebLINX: Real-world website navigation with multi-turn dialogue}, 
+@misc{lù2024weblinx,
+      title={WebLINX: Real-World Website Navigation with Multi-Turn Dialogue}, 
       author={Xing Han Lù and Zdeněk Kasner and Siva Reddy},
       year={2024},
+      eprint={2402.05930},
       archivePrefix={arXiv},
       primaryClass={cs.CL}
 }
