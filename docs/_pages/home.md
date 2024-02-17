@@ -145,7 +145,7 @@ We experiment with 19 action models, ranging from smaller models (Flan-T5-MindAc
 
 ### Where can we find the finetuned models?
 
-Yes! We provide the weights for the models we finetuned. You can [[access them on Huggingface Hub]]. We will share [code to reproduce our experiments on our GitHub repository](https://github.com/mcgill-nlp/weblinx). Please note that they were finetuned for research purposes (so they are not ready for production).
+We provide the weights for the models we finetuned. You can [access them on Huggingface Hub](https://huggingface.co/collections/McGill-NLP/weblinx-models-65c57d4afeeb282d1dcf8434). We will share [code to reproduce our experiments on our GitHub repository](https://github.com/mcgill-nlp/weblinx). Please note that they were finetuned for research purposes (so they are not ready for production).
 
 ### How do we use the agent to control browsers?
 
