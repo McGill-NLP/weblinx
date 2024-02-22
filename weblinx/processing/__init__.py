@@ -3,7 +3,7 @@ from tqdm import tqdm
 
 from ..utils.recs import group_record_to_dict
 
-from . import dom, prompt, truncation
+from . import dom, prompt, outputs, truncation
 
 
 def load_candidate_elements(path, group_keys=("demo_name", "turn_index"), log_fn=None):
