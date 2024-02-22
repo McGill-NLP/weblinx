@@ -12,6 +12,7 @@ extras_require = {
     "dev": ["black", "wheel"],
     "video": ["opencv-python-headless", "numpy", "Pillow"],
     "processing": ["lxml"],
+    "eval": ["sacrebleu", "numpy", "pandas", "tqdm"],
 }
 # Dynamically create the 'all' extra by combining all other extras
 extras_require["all"] = sum(extras_require.values(), [])
