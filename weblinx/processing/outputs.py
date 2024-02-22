@@ -1,11 +1,11 @@
 """
 This file is used to process the results, run the evaluation metrics, and generate the output CSV tables.
 """
-
-from dataclasses import dataclass
 import logging
 import math
 from typing import TYPE_CHECKING
+
+from .intent import Intent
 
 if TYPE_CHECKING:
     from .. import Turn

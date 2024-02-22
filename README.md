@@ -55,7 +55,27 @@ For the rest of the instructions, please take a look at the [modeling README](./
 
 ### Evaluation
 
-Coming soon!
+To install packages necessary for evaluation, run:
+
+```bash
+pip install weblinx[eval]
+```
+
+You can now access the evaluation module by importing in Python:
+
+```python
+import weblinx.eval
+```
+
+Use `weblinx.eval.metrics` for evaluation metrics, `weblinx.eval.__init__` for useful evaluation-related functions. You may also find it useful to take a look at `weblinx.processing.outputs` to get an idea of how to use the outputs of the model for evaluation.
+
+To run the automatic evaluation, you can use the following command:
+
+```bash
+python -m weblinx.eval --help
+```
+
+Note: We are still working on the code for `weblinx.eval` and `weblinx.processing.outputs`. If you have any questions or would like to contribute docs, please feel free to open an issue or a pull request.
 
 ### Citations
 
