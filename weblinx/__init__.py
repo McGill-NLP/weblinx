@@ -1333,7 +1333,7 @@ def list_demonstrations(
     """
     path = Path(base_dir)
     demos = [
-        Demonstration(demo.name, base_dir)
+        Demonstration(demo.name, base_dir=base_dir)
         for demo in sorted(path.iterdir())
         if demo.is_dir()
     ]

@@ -2,13 +2,10 @@ from copy import deepcopy
 import json
 import logging
 import math
-import re
+from typing import TYPE_CHECKING
 
 from ..utils.recs import is_list_monotonically_increasing, get_list_from_records_by_key
 from .dom import get_tree_repr_simple
-
-# Some imports for type checking
-from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     import lxml.html
