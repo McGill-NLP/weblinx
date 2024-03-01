@@ -21,7 +21,7 @@ def has_elem_in_viewport(
         by calling `elem.attrib`. For bs4, you can get this by calling `elem.attrs`.
         For example: `{"data-webtasks-id": "1234", "class": "foo bar"}`
     key : str, optional
-        The key to use to find the element's ID. Defaults to "data-webtasks-id".
+        The key to use to find the element's ID.
     min_height : int, optional
         The minimum height of the element to be considered in the viewport. Defaults to 2.
     min_width : int, optional

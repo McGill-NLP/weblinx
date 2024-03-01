@@ -458,7 +458,7 @@ def format_uid(turn, uid_key="data-webtasks-id", return_as="dict"):
         The turn object to be represented as either a string or a dictionary.
 
     uid_key : str
-        The key to be used to find the element's ID. Defaults to "data-webtasks-id".
+        The key to be used to find the element's ID.
 
     return_as : str
         Whether to return the formatted element as a string or a dictionary.

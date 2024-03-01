@@ -80,7 +80,7 @@ def run_evaluation(processed_results, metrics, num_turns=1):
     return scores
 
 
-def validate_reference_action(ref_action, next_turn):
+def validate_reference_action(ref_action, next_turn, uid_key="data-webtasks-id"):
     """
     This verifies that the reference action is valid for evaluation. This means:
     - The reference action is not None
@@ -101,11 +101,11 @@ def validate_reference_action(ref_action, next_turn):
 
     # If the reference action does not have an elemnt or an attributes field,
     # then we cannot evaluate. If it does have an attributes field, then we need
-    # to check if it has a data-webtasks-id field in it
+    # to check if it has a <uid> field in it
     if ref_action.get("element") is None or ref_action.get("element") is None:
         return False
 
-    if ref_action["element"]["attributes"].get("data-webtasks-id") is None:
+    if ref_action["element"]["attributes"].get(uid_key) is None:
         return False
 
     if next_turn is not None and ref_action["intent"] == "click":
@@ -117,11 +117,11 @@ def validate_reference_action(ref_action, next_turn):
             return False
 
         # If next turn is a submit intent, then we only keep the current click
-        # intent if the submit intent has a data-webtasks-id that is different
+        # intent if the submit intent has a <uid> that is different
         # from the current click intent
         if next_turn.intent == "submit":
-            next_uid = next_turn.element["attributes"]["data-webtasks-id"]
-            cur_uid = ref_action["element"]["attributes"]["data-webtasks-id"]
+            next_uid = next_turn.element["attributes"][uid_key]
+            cur_uid = ref_action["element"]["attributes"][uid_key]
 
             if next_uid == cur_uid:
                 print(

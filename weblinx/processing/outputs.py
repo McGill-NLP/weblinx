@@ -198,7 +198,7 @@ def get_element_info(
     cache_dir=".cache/demonstrations/xpaths",
 ):
     """
-    Given a data-webtasks-id for an element, retrieve additional information about the element from the HTML which can be used for evaluation.
+    Given a uid_key for an element, retrieve additional information about the element from the HTML which can be used for evaluation.
 
     Extracts only the information needed for evaluation.
     """
@@ -275,7 +275,7 @@ def dict_has_keys(d, keys):
     return all([key in d for key in keys])
 
 
-def infer_element_for_action(intent, args, turn: "Turn"):
+def infer_element_for_action(intent, args, turn: "Turn", uid_key="data-webtasks-id"):
     """
     Given an intent and args, infer the element that the action is performed on, if
     the element is not explicitly specified.
@@ -287,8 +287,8 @@ def infer_element_for_action(intent, args, turn: "Turn"):
         if "uid" in args:
             uid = args["uid"]
 
-        elif "data-webtasks-id" in args:
-            uid = args["data-webtasks-id"]
+        elif uid_key in args:
+            uid = args[uid_key]
 
         elif "x" in args and "y" in args:
             if args["x"] is None or args["y"] is None:
@@ -313,7 +313,7 @@ def infer_element_for_action(intent, args, turn: "Turn"):
     return element
 
 
-def extract_action_from_turn(turn: "Turn"):
+def extract_action_from_turn(turn: "Turn", uid_key="data-webtasks-id"):
     """
     Creates an action from a turn in a demonstration (i.e. the ground truth action).
     """
@@ -329,7 +329,7 @@ def extract_action_from_turn(turn: "Turn"):
     elif turn.type == "browser":
         intent = Intent.from_string(turn.intent)
         if turn.element:
-            wid = turn.element.get("attributes", {}).get("data-webtasks-id")
+            wid = turn.element.get("attributes", {}).get(uid_key)
             if wid is not None:
                 element = get_element_info(turn, wid)
             else:

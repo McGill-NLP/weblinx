@@ -168,7 +168,7 @@ class ExactMatchMetric(Metric):
     def __init__(self, args={}):
         super().__init__(name="exact-match", args=args)
 
-    def score(self, pred, ref, **kwargs):
+    def score(self, pred, ref, uid_key="data-webtasks-id", **kwargs):
         if pred["intent"] != ref["intent"]:
             return 0
 
@@ -177,8 +177,8 @@ class ExactMatchMetric(Metric):
             if not pred.get("element") or not ref.get("element"):
                 return 0
 
-            pred_id = pred["element"]["attributes"].get("data-webtasks-id")
-            ref_id = ref["element"]["attributes"].get("data-webtasks-id")
+            pred_id = pred["element"]["attributes"].get(uid_key)
+            ref_id = ref["element"]["attributes"].get(uid_key)
 
             if pred_id is None or pred_id != ref_id:
                 return 0

@@ -15,10 +15,10 @@ from transformers import (
 )
 from transformers.pipelines.pt_utils import KeyDataset
 
-import webtasks as wt
-from webtasks.processing import load_candidate_elements
-from webtasks.processing.prompt import build_input_records_from_selected_turns, select_turns_and_candidates_for_prompts
-from webtasks.utils.hydra import save_path_to_hydra_logs
+import weblinx as wl
+from weblinx.processing import load_candidate_elements
+from weblinx.processing.prompt import build_input_records_from_selected_turns, select_turns_and_candidates_for_prompts
+from weblinx.utils.hydra import save_path_to_hydra_logs
 
 from .processing import (
     build_prompt_records_for_llama_truncated,
@@ -48,8 +48,8 @@ def main(cfg):
     tokenizer.pad_token = tokenizer.eos_token
     
     # Data loading
-    demo_names = wt.utils.load_demo_names_in_split(split_path, split=split)
-    demos = [wt.Demonstration(name, base_dir=cfg.data.base_dir) for name in demo_names]
+    demo_names = wl.utils.load_demo_names_in_split(split_path, split=split)
+    demos = [wl.Demonstration(name, base_dir=cfg.data.base_dir) for name in demo_names]
 
     format_intent = build_formatter_for_multichoice()
     build_prompt_records_fn = partial(

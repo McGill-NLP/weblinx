@@ -89,7 +89,7 @@ class Demonstration:
 
         Note
         ----
-        If you want a `webtasks.Replay` object, call `webtasks.Replay.from_demonstration(demo)`.
+        If you want a `Replay` object, call `Replay.from_demonstration(demo)`.
         """
         return self.load_json("replay.json")
 
@@ -292,8 +292,6 @@ class Demonstration:
         return self.path.joinpath(*args)
 
 
-# Example of a turn:
-# {'type': 'browser', 'timestamp': 58.901999950408936, 'state': {'screenshot': 'screenshot-3-0.png', 'page': 'page-4-0.html'}, 'action': {'intent': 'click', 'arguments': {'metadata': {'mouseX': 214, 'mouseY': 245, 'tabId': 102448212, 'timestamp': 1684736360511, 'url': 'https://www.google.com/search?q=google+scholar&oq=google+scholar&aqs=chrome..69i57j35i39i650j0i433i650j0i512j0i433i512l2j0i131i433i512j5.10083j0j4&sourceid=chrome&ie=UTF-8', 'viewportHeight': 714, 'viewportWidth': 1536, 'zoomLevel': 1.25}, 'properties': {'altKey': False, 'button': 0, 'buttons': 1, 'clientX': 267.5, 'clientY': 306.25, 'composed': True, 'ctrlKey': False, 'detail': 1, 'eventPhase': 0, 'layerX': 19, 'layerY': 63, 'metaKey': False, 'movementX': 0, 'movementY': 0, 'offsetX': 23.75, 'offsetY': 31.25, 'pageX': 267.5, 'pageY': 306.25, 'returnValue': True, 'screenX': 267.5, 'screenY': 435.0, 'shiftKey': False, 'timeStamp': 2889.2999999970198, 'x': 267.5, 'y': 306.25}, 'element': {'attributes': {'class': 'LC20lb MBeuO DKV0Md', 'data-webtasks-id': 'ba92f02d-debb-4985'}, 'bbox': {'bottom': 314.1718864440918, 'height': 38.75, 'left': 244.0625, 'right': 416.39062881469727, 'top': 275.4218864440918, 'width': 172.32812881469727, 'x': 244.0625, 'y': 275.4218864440918}, 'innerHTML': 'Google Scholar', 'outerHTML': '<h3 class="LC20lb MBeuO DKV0Md" data-webtasks-id="ba92f02d-debb-4985">Google Scholar</h3>', 'tagName': 'H3', 'textContent': 'Google Scholar', 'xpath': 'id("rso")/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/a[1]/h3[1]'}}, 'event_id': 4, 'element_html': '<h3 class="LC20lb MBeuO DKV0Md" data-webtasks-id="ba92f02d-debb-4985">Google Scholar</h3>', 'screenshot_effect': None}}
 class Turn(dict):
     def __init__(
         self,
@@ -981,9 +979,6 @@ class Turn(dict):
         return xpaths
 
 
-# EXAMPLE OF REPLAY
-#
-# {'type': 'browser', 'timestamp': 47.28099989891052, 'state': {'screenshot': 'screenshot-6-0.png', 'page': 'page-6-0.html'}, 'action': {'intent': 'click', 'arguments': {'metadata': {'mouseX': 390, 'mouseY': 505, 'tabId': 2011623910, 'timestamp': 1685102753001, 'url': 'https://www.thefork.com/', 'viewportHeight': 657, 'viewportWidth': 1366, 'zoomLevel': 1}, 'properties': {'altKey': False, 'button': 0, 'buttons': 1, 'clientX': 390, 'clientY': 505, 'composed': True, 'ctrlKey': False, 'detail': 1, 'eventPhase': 0, 'layerX': 203, 'layerY': 27, 'metaKey': False, 'movementX': 0, 'movementY': 0, 'offsetX': 204, 'offsetY': 28, 'pageX': 390, 'pageY': 505, 'returnValue': True, 'screenX': 390, 'screenY': 576, 'shiftKey': False, 'timeStamp': 21110, 'x': 390, 'y': 505}, 'element': {'attributes': {'class': 'css-m080s5 ektx8jp0', 'data-test': 'search-form-submit-button', 'data-testid': 'search-form-submit-button', 'data-webtasks-id': '20fbac1a-3c62-475a', 'display': 'block', 'type': 'submit', 'width': '100%'}, 'bbox': {'bottom': 523.328125, 'height': 46, 'left': 186.5, 'right': 588.5, 'top': 477.328125, 'width': 402, 'x': 186.5, 'y': 477.328125}, 'innerHTML': 'Search', 'outerHTML': '<button width="100%" type="submit" data-test="search-form-submit-button" data-testid="search-form-submit-button" display="block" class="css-m080s5 ektx8jp0" data-webtasks-id="20fbac1a-3c62-475a">Search</button>', 'tagName': 'BUTTON', 'textContent': 'Search', 'xpath': 'id("root")/main[1]/div[2]/div[1]/div[1]/div[2]/div[1]/div[3]/button[1]'}}, 'event_id': 6, 'element_html': '<button class="css-m080s5 ektx8jp0" data-test="search-form-submit-button" data-testid="search-form-submit-button" data-webtasks-id="20fbac1a-3c62-475a" display="block" type="submit" width="100%">Search</button>', 'screenshot_effect': None}}
 class Replay:
     """
     A replay is one of the core components of a demonstration. It is a list of turns, each of
