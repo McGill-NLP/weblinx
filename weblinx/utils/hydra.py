@@ -5,7 +5,7 @@ Miscellaneous Hydra-related utilities.
 from pathlib import Path
 
 
-def resolve_cache_path(cfg) -> tuple[str, bool]:
+def resolve_cache_path(cfg) -> 'tuple[str, bool]':
     """
     Assuming we have the following:
     - cfg.data.cache : controls whether to read/write from cache or not
