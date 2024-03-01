@@ -4,8 +4,6 @@ permalink: /docs/core/
 toc_label: "Table of Contents"
 layout: single
 ---
-
-
 ## Reference for `weblinx`
 
 ### `format_repr`
@@ -77,7 +75,7 @@ Returns the replay dictionary with two keys:
 
 ##### Note
 
-If you want a `webtasks.Replay` object, call `webtasks.Replay.from_demonstration(demo)`.
+If you want a `Replay` object, call `Replay.from_demonstration(demo)`.
 
 #### `Demonstration.form`
 
@@ -580,9 +578,8 @@ and return it as a string, or return None if the path is invalid. It relies on t
 default parameters of `self.get_html_path()` to get the path to the HTML page.
 
 
-##### Examples
+##### Example
 
-```
 You can use this with BeautifulSoup to parse the HTML:
 
 ```
@@ -599,9 +596,6 @@ turns = wt.Replay.from_demonstrations(demo).filter_if_html_page()
 with open(turns[0].get_html_path(subdir="pages")) as f:
     html = f.read()
 ```
-```
-
-
 
 #### `Turn.format_text`
 
@@ -619,9 +613,8 @@ If it is a chat turn, we have a combination of the speaker and utterance, with t
 `[say] utterance -> SPEAKER`.
 
 
-##### Examples
+##### Example
 
-```
 
 If the action is a click on a button with the text "Click here", the output will be:
 ```
@@ -632,9 +625,6 @@ If the action is to input the word "world" in a text input that already has the 
 ```
 [input] Hello -> TEXTINPUT: world
 ```
-```
-
-
 
 #### `Turn.validate`
 

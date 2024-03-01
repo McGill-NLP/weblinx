@@ -378,9 +378,8 @@ formatted
 
 
 
-#### Examples
+#### Example
 
-```
 
 Here's an example of a formatted element as a dictionary:
 ```
@@ -393,9 +392,6 @@ Here's an example of a formatted element as a dictionary:
     "text": "Click me",
 }
 ```
-```
-
-
 
 ### `format_float`
 
@@ -459,16 +455,12 @@ viewport. This function returns the viewport coordinates.
 | `return_as` | `str` | `"dict"` | Whether to return the formatted element as a string or a dictionary. |
 
 
-#### Examples
+#### Example
 
-```
 
 If return_as is "str", it will return a string like `mouse(x=100, y=200)`.
 
 If return_as is "dict", it will return a dictionary like `{"x": 100, "y": 200}`.
-```
-
-
 
 ### `format_target_bbox`
 
@@ -517,7 +509,7 @@ This function formats the uid of the target element into the dictionary.
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
 | `turn` | `Turn` |  | The turn object to be represented as either a string or a dictionary. |
-| `uid_key` | `str` | `"data-webtasks-id"` | The key to be used to find the element's ID. Defaults to "data-webtasks-id". |
+| `uid_key` | `str` | `"data-webtasks-id"` | The key to be used to find the element's ID. |
 | `return_as` | `str` | `"dict"` | Whether to return the formatted element as a string or a dictionary. |
 
 
@@ -568,7 +560,7 @@ A string or dictionary representing the timestamp.
 ### `format_change`
 
 ```
-weblinx.utils.format.format_change(turn, formatters=(<_ast.Name object at 0x7feb1a108730>, <_ast.Name object at 0x7feb1a108820>, <_ast.Name object at 0x7feb1a108850>), return_as="dict")
+weblinx.utils.format.format_change(turn, formatters=(<_ast.Name object at 0x7feacdfde4c0>, <_ast.Name object at 0x7feacdfde5b0>, <_ast.Name object at 0x7feacdfde5e0>), return_as="dict")
 ```
 
 #### Description
@@ -585,7 +577,7 @@ when the input is changed, for example, in an input, select or textarea.
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
 | `turn` | `Turn` |  | The turn object to be represented as either a string or a dictionary. |
-| `formatters` | `` | `(<_ast.Name object at 0x7feb1a108730>, <_ast.Name object at 0x7feb1a108820>, <_ast.Name object at 0x7feb1a108850>)` | A tuple of functions to be used to format the turn. The functions will be called in order, and each function should return a dictionary (not a string), which will be merged into the final output. The functions should take the turn as the first argument, and return a dictionary. |
+| `formatters` | `` | `(<_ast.Name object at 0x7feacdfde4c0>, <_ast.Name object at 0x7feacdfde5b0>, <_ast.Name object at 0x7feacdfde5e0>)` | A tuple of functions to be used to format the turn. The functions will be called in order, and each function should return a dictionary (not a string), which will be merged into the final output. The functions should take the turn as the first argument, and return a dictionary. |
 | `return_as` | `str` | `"dict"` | Whether to return the formatted element as a string or a dictionary. |
 
 
@@ -600,7 +592,7 @@ A string or dictionary representing the turn.
 ### `format_click`
 
 ```
-weblinx.utils.format.format_click(turn, formatters=(<_ast.Name object at 0x7feb1a109100>, <_ast.Name object at 0x7feb1a109250>, <_ast.Name object at 0x7feb1a1092b0>), return_as="dict")
+weblinx.utils.format.format_click(turn, formatters=(<_ast.Name object at 0x7feacdfdecd0>, <_ast.Name object at 0x7feacdfdec70>, <_ast.Name object at 0x7feace01d040>), return_as="dict")
 ```
 
 #### Description
@@ -613,7 +605,7 @@ Format a turn with intent click into a readable format.
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
 | `turn` | `Turn` |  | The turn object to be represented as either a string or a dictionary. |
-| `formatters` | `` | `(<_ast.Name object at 0x7feb1a109100>, <_ast.Name object at 0x7feb1a109250>, <_ast.Name object at 0x7feb1a1092b0>)` | A tuple of functions to be used to format the turn. The functions will be called in order, and each function should return a dictionary (not a string), which will be merged into the final output. The functions should take the turn as the first argument, and return a dictionary. |
+| `formatters` | `` | `(<_ast.Name object at 0x7feacdfdecd0>, <_ast.Name object at 0x7feacdfdec70>, <_ast.Name object at 0x7feace01d040>)` | A tuple of functions to be used to format the turn. The functions will be called in order, and each function should return a dictionary (not a string), which will be merged into the final output. The functions should take the turn as the first argument, and return a dictionary. |
 | `return_as` | `str` | `"dict"` | Whether to return the formatted element as a string or a dictionary. |
 
 
@@ -686,7 +678,7 @@ A string or dictionary representing the turn.
 ### `format_hover`
 
 ```
-weblinx.utils.format.format_hover(turn, formatters=(<_ast.Name object at 0x7feb1a112bb0>, <_ast.Name object at 0x7feb1a112d00>, <_ast.Name object at 0x7feb1a112d60>), return_as="dict")
+weblinx.utils.format.format_hover(turn, formatters=(<_ast.Name object at 0x7feace004a90>, <_ast.Name object at 0x7feace004ac0>, <_ast.Name object at 0x7feace004af0>), return_as="dict")
 ```
 
 #### Description
@@ -699,7 +691,7 @@ This behaves similarly to format_click, but for hover events.
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
 | `turn` | `Turn` |  | The turn object to be represented as either a string or a dictionary. |
-| `formatters` | `list or tuple` | `(<_ast.Name object at 0x7feb1a112bb0>, <_ast.Name object at 0x7feb1a112d00>, <_ast.Name object at 0x7feb1a112d60>)` | A tuple of functions to be used to format the turn. The functions will be called in order, and each function should return a dictionary (not a string), which will be merged into the final output. The functions should take the turn as the first argument, and return a dictionary. |
+| `formatters` | `list or tuple` | `(<_ast.Name object at 0x7feace004a90>, <_ast.Name object at 0x7feace004ac0>, <_ast.Name object at 0x7feace004af0>)` | A tuple of functions to be used to format the turn. The functions will be called in order, and each function should return a dictionary (not a string), which will be merged into the final output. The functions should take the turn as the first argument, and return a dictionary. |
 | `return_as` | `str` | `"dict"` | Whether to return the formatted element as a string or a dictionary. |
 
 
@@ -790,9 +782,8 @@ formatted
 
 A string or dictionary representing the turn.
 
-#### Examples
+#### Example
 
-```
 If return_as is "str", it will return a string like:
 ```
 say(speaker="instructor", utterance="Hello!")
@@ -802,9 +793,6 @@ If return_as is "dict", it will return a dictionary like:
 ```
 {"intent": "say", "speaker": "instructor", "utterance": "Hello!"}
 ```.
-```
-
-
 
 ### `format_scroll`
 
@@ -819,7 +807,7 @@ Similar to format_mouse_xy, but for scroll events.
 ### `format_submit`
 
 ```
-weblinx.utils.format.format_submit(turn, formatters=(<_ast.Name object at 0x7feb1a267790>, <_ast.Name object at 0x7feb1a2677c0>), return_as="dict")
+weblinx.utils.format.format_submit(turn, formatters=(<_ast.Name object at 0x7feace0245b0>, <_ast.Name object at 0x7feace0245e0>), return_as="dict")
 ```
 
 #### Description
@@ -832,7 +820,7 @@ Format a turn with intent submit into a readable format.
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
 | `turn` | `Turn` |  | The turn object to be represented as either a string or a dictionary. |
-| `formatters` | `` | `(<_ast.Name object at 0x7feb1a267790>, <_ast.Name object at 0x7feb1a2677c0>)` | A tuple of functions to be used to format the turn. The functions will be called in order, and each function should return a dictionary (not a string), which will be merged into the final output. The functions should take the turn as the first argument, and return a dictionary. |
+| `formatters` | `` | `(<_ast.Name object at 0x7feace0245b0>, <_ast.Name object at 0x7feace0245e0>)` | A tuple of functions to be used to format the turn. The functions will be called in order, and each function should return a dictionary (not a string), which will be merged into the final output. The functions should take the turn as the first argument, and return a dictionary. |
 | `return_as` | `str` | `"dict"` | Whether to return the formatted element as a string or a dictionary. |
 
 
@@ -849,7 +837,7 @@ Format a turn with intent tabcreate, tabremove or tabswitch into a readable form
 ### `format_text_input`
 
 ```
-weblinx.utils.format.format_text_input(turn, formatters=(<_ast.Name object at 0x7feb1a264e50>, <_ast.Name object at 0x7feb1a264f70>, <_ast.Name object at 0x7feb1a2450a0>), return_as="dict")
+weblinx.utils.format.format_text_input(turn, formatters=(<_ast.Name object at 0x7feace033ca0>, <_ast.Name object at 0x7feace033df0>, <_ast.Name object at 0x7feace033f10>), return_as="dict")
 ```
 
 #### Description
@@ -866,7 +854,7 @@ is changed.
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
 | `turn` | `Turn` |  | The turn object to be represented as either a string or a dictionary. |
-| `formatters` | `` | `(<_ast.Name object at 0x7feb1a264e50>, <_ast.Name object at 0x7feb1a264f70>, <_ast.Name object at 0x7feb1a2450a0>)` | A tuple of functions to be used to format the turn. The functions will be called in order, and each function should return a dictionary (not a string), which will be merged into the final output. The functions should take the turn as the first argument, and return a dictionary. |
+| `formatters` | `` | `(<_ast.Name object at 0x7feace033ca0>, <_ast.Name object at 0x7feace033df0>, <_ast.Name object at 0x7feace033f10>)` | A tuple of functions to be used to format the turn. The functions will be called in order, and each function should return a dictionary (not a string), which will be merged into the final output. The functions should take the turn as the first argument, and return a dictionary. |
 | `return_as` | `str` | `"dict"` | Whether to return the formatted element as a string or a dictionary. |
 
 
@@ -881,7 +869,7 @@ A string or dictionary representing the turn.
 ### `format_intent_automatically`
 
 ```
-weblinx.utils.format.format_intent_automatically(turn, format_change=<_ast.Name object at 0x7feb1a245e50>, format_click=<_ast.Name object at 0x7feb1a245e80>, format_copy=<_ast.Name object at 0x7feb1a245eb0>, format_hover=<_ast.Name object at 0x7feb1a245ee0>, format_load=<_ast.Name object at 0x7feb1a245f10>, format_paste=<_ast.Name object at 0x7feb1a245f40>, format_say=<_ast.Name object at 0x7feb1a245f70>, format_scroll=<_ast.Name object at 0x7feb1a245fa0>, format_submit=<_ast.Name object at 0x7feb1a245fd0>, format_tab=<_ast.Name object at 0x7feb1a2452e0>, format_text_input=<_ast.Name object at 0x7feb1a249040>, return_as="dict")
+weblinx.utils.format.format_intent_automatically(turn, format_change=<_ast.Name object at 0x7feace039c40>, format_click=<_ast.Name object at 0x7feace039c70>, format_copy=<_ast.Name object at 0x7feace039ca0>, format_hover=<_ast.Name object at 0x7feace039cd0>, format_load=<_ast.Name object at 0x7feace039d00>, format_paste=<_ast.Name object at 0x7feace039d30>, format_say=<_ast.Name object at 0x7feace039d60>, format_scroll=<_ast.Name object at 0x7feace039d90>, format_submit=<_ast.Name object at 0x7feace039dc0>, format_tab=<_ast.Name object at 0x7feace039df0>, format_text_input=<_ast.Name object at 0x7feace039e20>, return_as="dict")
 ```
 
 #### Description
@@ -916,7 +904,7 @@ Given a turn and an element's attributes, check if the element is in the viewpor
 | ---- | ---- | ------- | ----------- |
 | `turn` | `webtasks.Turn` |  | The turn to check. |
 | `attrib_dict` | `dict` |  | The element's attributes, as a dictionary. If you use lxml.html, you can get this by calling `elem.attrib`. For bs4, you can get this by calling `elem.attrs`. For example: `{"data-webtasks-id": "1234", "class": "foo bar"}` |
-| `key` | `str` | `"data-webtasks-id"` | The key to use to find the element's ID. Defaults to "data-webtasks-id". |
+| `key` | `str` | `"data-webtasks-id"` | The key to use to find the element's ID. |
 | `min_height` | `int` | `2` | The minimum height of the element to be considered in the viewport. Defaults to 2. |
 | `min_width` | `int` | `2` | The minimum width of the element to be considered in the viewport. Defaults to 2. |
 | `verbose` | `bool` | `False` | Whether to print out debug statements. Defaults to False. |
@@ -1190,9 +1178,8 @@ list
 
 A list of dictionaries.
 
-#### Examples
+#### Example
 
-```
 
 Here's an example of how this function works. Suppose we have a dictionary:
 ```
@@ -1223,9 +1210,6 @@ If `restored_keys=["a", "b"]`, then the output will be:
     # ...
 ]
 ```
-```
-
-
 
 ## Reference for `weblinx.utils.url`
 

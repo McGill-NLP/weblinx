@@ -57,9 +57,8 @@ list or dict
 
 The candidates, either as a list or as a dictionary of lists.
 
-#### Examples
+#### Example
 
-```
 Here's an example of how to use this function:
 ```
 candidates = load_candidate_elements("candidates.jsonl", group_keys=("demo_name", "turn_index"))
@@ -67,9 +66,6 @@ candidates = load_candidate_elements("candidates.jsonl", group_keys=("demo_name"
 
 This will load the candidates from the file "candidates.jsonl" and group them by the keys "demo_name"
 and "turn_index". The candidates will be returned as a dictionary of lists.
-```
-
-
 
 ## Reference for `weblinx.processing.dom`
 
@@ -251,6 +247,212 @@ The cleaned and pruned tree.
 ValueError
     If cands_turn is None.
 
+## Reference for `weblinx.processing.intent`
+
+#### `Intent.from_string`
+
+```
+weblinx.processing.intent.Intent.from_string(cls, intent)
+```
+
+#### `Intent.get_element_intents`
+
+```
+weblinx.processing.intent.Intent.get_element_intents(cls, as_set=False)
+```
+
+#### `Intent.get_text_intents`
+
+```
+weblinx.processing.intent.Intent.get_text_intents(cls, as_set=False)
+```
+
+#### `Intent.get_tab_intents`
+
+```
+weblinx.processing.intent.Intent.get_tab_intents(cls, as_set=False)
+```
+
+#### `Intent.get_eval_intents`
+
+```
+weblinx.processing.intent.Intent.get_eval_intents(cls, as_set=False)
+```
+
+## Reference for `weblinx.processing.outputs`
+
+### `are_not_none`
+
+```
+weblinx.processing.outputs.are_not_none()
+```
+
+### `cast_to_float`
+
+```
+weblinx.processing.outputs.cast_to_float(value)
+```
+
+#### Description
+
+Checks if a value is an int or a float.
+
+### `format_action_arg_value`
+
+```
+weblinx.processing.outputs.format_action_arg_value(arg_value)
+```
+
+### `list_all_non_alphanum_chars`
+
+```
+weblinx.processing.outputs.list_all_non_alphanum_chars(other_chars_allowed=None)
+```
+
+#### Description
+
+Returns a list of all non-alphanumeric characters in Python.
+
+### `split_by_comma`
+
+```
+weblinx.processing.outputs.split_by_comma(string, check_quotes=False)
+```
+
+#### Description
+
+This function splits a string by commas, but ignores commas inside quotes.
+For example, if my string is 'a, b, "c, d", e', then this function will return
+['a', 'b', '"c, d"', 'e'] if check_quotes is True, but ['a', 'b', '"c', 'd"', 'e']
+if check_quotes is False.
+
+
+#### Example
+
+```python
+# Let's test the function
+test_string = 'a, b, "c, d", e'
+print(split_by_comma(test_string, check_quotes=True))
+print(split_by_comma(test_string, check_quotes=False))
+```
+
+### `find_last_non_alphanum_char`
+
+```
+weblinx.processing.outputs.find_last_non_alphanum_char(s, other_chars_allowed=None)
+```
+
+#### Description
+
+Given a string and a list of characters, find the last index of a non-alphanumeric character in the string.
+
+### `find_intent_and_raw_args`
+
+```
+weblinx.processing.outputs.find_intent_and_raw_args(raw_output_string)
+```
+
+#### Description
+
+This iterative function will walk through a raw string that might contain an action
+in the form `intent(arg1="val1", arg2=num1, ...)` and return the intent and the unparsed args
+
+### `parse_predicted_output_string`
+
+```
+weblinx.processing.outputs.parse_predicted_output_string(raw_output_string)
+```
+
+#### Description
+
+Given an output string, try to find a substring of format <intent>(<key1>=<value1>, <key2>=<value2>, ...) and return a dictionary of format:
+{
+    "intent": <intent>,
+    "key1": <value1>,
+    "key2": <value2>,
+    ...
+}
+Returns None if the parsing fails.
+
+### `get_element_info`
+
+```
+weblinx.processing.outputs.get_element_info(turn, uid, uid_key="data-webtasks-id", cache_dir=".cache/demonstrations/xpaths")
+```
+
+#### Description
+
+Given a uid_key for an element, retrieve additional information about the element from the HTML which can be used for evaluation.
+
+Extracts only the information needed for evaluation.
+
+### `get_element_uid_by_coords`
+
+```
+weblinx.processing.outputs.get_element_uid_by_coords(turn, x, y)
+```
+
+#### Description
+
+Given (x,y) coordinates for an element, find the smallest non-zero-sized element that contains the coordinates using bboxes and return its id.
+
+### `get_xy_coords_corners`
+
+```
+weblinx.processing.outputs.get_xy_coords_corners(args)
+```
+
+### `dict_has_keys`
+
+```
+weblinx.processing.outputs.dict_has_keys(d, keys)
+```
+
+#### Description
+
+Checks if a dictionary has all the keys in a list.
+
+### `infer_element_for_action`
+
+```
+weblinx.processing.outputs.infer_element_for_action(intent, args, turn, uid_key="data-webtasks-id")
+```
+
+#### Description
+
+Given an intent and args, infer the element that the action is performed on, if
+the element is not explicitly specified.
+
+### `extract_action_from_turn`
+
+```
+weblinx.processing.outputs.extract_action_from_turn(turn, uid_key="data-webtasks-id")
+```
+
+#### Description
+
+Creates an action from a turn in a demonstration (i.e. the ground truth action).
+
+### `sanitize_args`
+
+```
+weblinx.processing.outputs.sanitize_args(args)
+```
+
+#### Description
+
+This function is used to sanitize the arguments of an action.
+
+### `check_pred_is_suitable`
+
+```
+weblinx.processing.outputs.check_pred_is_suitable(pred)
+```
+
+#### Description
+
+Given a prediction, check if it is suitable for evaluation.
+
 ## Reference for `weblinx.processing.prompt`
 
 ### `get_speaker`
@@ -417,7 +619,7 @@ The utterances formatted as a string, or as a list if sep is None.
 ### `format_prev_turns_truncated`
 
 ```
-weblinx.processing.prompt.format_prev_turns_truncated(replay, turn, format_intent, tokenizer, num_tokens_to_remove, format_output_dict_fn=<_ast.Name object at 0x7f8546b132b0>, num_prev_turns=5, turn_sep=" ; ", allow_iterative_reduction=False)
+weblinx.processing.prompt.format_prev_turns_truncated(replay, turn, format_intent, tokenizer, num_tokens_to_remove, format_output_dict_fn=<_ast.Name object at 0x7feace0b3f40>, num_prev_turns=5, turn_sep=" ; ", allow_iterative_reduction=False)
 ```
 
 #### Description
@@ -446,7 +648,7 @@ This output of this function should be used by format_utterances to display the 
 ### `multi_attempt_format_prev_turns_truncated`
 
 ```
-weblinx.processing.prompt.multi_attempt_format_prev_turns_truncated(replay, turn, format_intent, tokenizer, max_tokens, num_prev_turns=5, turn_sep=" ; ", max_attempts=5, format_output_dict_fn=<_ast.Name object at 0x7f85469aa190>, warn_after_attempts=True, allow_iterative_reduction=False)
+weblinx.processing.prompt.multi_attempt_format_prev_turns_truncated(replay, turn, format_intent, tokenizer, max_tokens, num_prev_turns=5, turn_sep=" ; ", max_attempts=5, format_output_dict_fn=<_ast.Name object at 0x7feace024dc0>, warn_after_attempts=True, allow_iterative_reduction=False)
 ```
 
 #### Description

@@ -164,3 +164,4 @@ cython_debug/
 modeling/logs/
 modeling/wl_data/
 modeling/checkpoints/
+modeling/results/
