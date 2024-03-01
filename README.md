@@ -75,7 +75,9 @@ To run the automatic evaluation, you can use the following command:
 python -m weblinx.eval --help
 ```
 
-Note: We are still working on the code for `weblinx.eval` and `weblinx.processing.outputs`. If you have any questions or would like to contribute docs, please feel free to open an issue or a pull request.
+For more examples on how to use `weblinx.eval`, take a look at the [modeling README](./modeling/README.md).
+
+> Note: We are still working on the code for `weblinx.eval` and `weblinx.processing.outputs`. If you have any questions or would like to contribute docs, please feel free to open an issue or a pull request.
 
 ### Citations
 
