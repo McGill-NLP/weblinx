@@ -1,33 +1,18 @@
 The following instructions assume you are running from this directory (you may need to `cd` to this directory).
 
-### Download Candidates
+### Download Data
 
-First, you need to download the `train.jsonl` candidate selected by `McGill-NLP/MiniLM-L6-DMR`:
-
-```python
-from huggingface_hub import snapshot_download
-
-snapshot_download(
-    repo_id="McGill-NLP/WebLINX-full", 
-    repo_type="dataset", 
-    allow_patterns="candidates/*.jsonl", 
-    local_dir="./"
-)
-```
-
-Download entire dataset:
+First, you need to download the `splits.json` file containing information about all the splits, as well as the `train.jsonl` candidate selected by `McGill-NLP/MiniLM-L6-DMR`:
 
 ```python
 from huggingface_hub import snapshot_download
 
-snapshot_download(repo_id="McGill-NLP/WebLINX-full", repo_type="dataset", local_dir="./wl_data/")
-
-# If you only want the splits.json file, you can just run:
+# splits.json
 snapshot_download(
     repo_id="McGill-NLP/WebLINX-full", repo_type="dataset", allow_patterns="splits.json", local_dir="./wl_data/"
 )
 
-# If you only want candidates:
+# candidates files
 snapshot_download(
     repo_id="McGill-NLP/WebLINX-full", 
     repo_type="dataset", 
@@ -36,7 +21,15 @@ snapshot_download(
 )
 ```
 
-The default configs (`config.yml`) assume that the `train.jsonl` is located at `./candidates/train.jsonl`. If you want to change the path, you need to modify the `config.yml` accordingly.
+Download the full dataset (warning: this will take a while):
+
+```python
+from huggingface_hub import snapshot_download
+
+snapshot_download(repo_id="McGill-NLP/WebLINX-full", repo_type="dataset", local_dir="./wl_data/")
+```
+
+The default configs (`llama/conf/config.yml`) assume that the `train.jsonl` is located at `./wl_data/candidates/train.jsonl`. If you want to change the path, you need to modify the `config.yml` accordingly.
 
 ### Set `WEBLINX_PROJECT_DIR`
 
@@ -55,6 +48,16 @@ You need to install the dependencies by running the following command:
 
 ```bash
 pip install -r requirements.txt
+```
+
+However, due to `flash-attention` requiring `torch` to be pre-installed, it has to be install right after everything else has been installed:
+```bash
+# Regular install
+pip install "flash-attn>=2.3.0"
+# IF you have limited RAM, you can try this:
+MAX_JOBS=4 pip install "flash-attn>=2.3.0" --no-build-isolation
+# If you have issues with nvcc, try this:
+FLASH_ATTENTION_SKIP_CUDA_BUILD=TRUE pip install "flash-attn>=2.3.0" --no-build-isolation
 ```
 
 ### Action Model: LLaMA

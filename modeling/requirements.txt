@@ -20,4 +20,3 @@ sacrebleu
 bert-score
 packaging
 ninja
-flash-attn>=2.3.0
