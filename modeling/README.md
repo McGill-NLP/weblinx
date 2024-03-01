@@ -87,7 +87,7 @@ accelerate launch --use_fsdp --config_file llama/accelerate/fsdp_13b.yaml -m lla
 Results will be saved in `./results` and checkpoints in `./checkpoints`.
 
 
-#### Evaluate LLaMA
+#### Run LLaMA on Evaluation Splits
 
 You need to specify which `eval.split` you want to evaluate on. For example, to evaluate on the `iid` split, you can run the following command:
 
@@ -120,7 +120,7 @@ python -m dmr.train +variant=bge
 
 Results will be saved in `./results` and checkpoints in `./checkpoints`.
 
-#### Evaluate DMR
+#### Inference for DMR
 
 You need to specify which `eval.split` you want to evaluate on. For example, to evaluate on the `iid` split, you can run the following command:
 
@@ -136,4 +136,12 @@ python -m dmr.eval eval.split=test_iid,test_web,test_geo,test_cat,test_vis
 # Or for bge, gte
 python -m dmr.eval +variant=gte eval.split=test_iid,test_web,test_geo,test_cat,test_vis
 python -m dmr.eval +variant=bge eval.split=test_iid,test_web,test_geo,test_cat,test_vis
+```
+
+### Evaluation
+
+To run the evaluation metrics, you can use the following command (from this directory):
+
+```bash
+python -m weblinx.eval -d results -b ~/dev/webtasks/release_data/WebLINX-full/demonstrations/
 ```
