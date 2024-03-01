@@ -87,7 +87,7 @@ accelerate launch --use_fsdp --config_file llama/accelerate/fsdp_13b.yaml -m lla
 Results will be saved in `./results` and checkpoints in `./checkpoints`.
 
 
-### Evaluate LLaMA
+#### Evaluate LLaMA
 
 You need to specify which `eval.split` you want to evaluate on. For example, to evaluate on the `iid` split, you can run the following command:
 
