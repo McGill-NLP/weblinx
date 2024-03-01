@@ -43,7 +43,7 @@ candidates:
   project_name: dmr  # unused but potentially useful
   split: ${eval.split}
   train_path: ${project_dir}/wl_data/candidates/train.jsonl
-  path: ${project_dir}/wl_data/candidates/${split}.jsonl
+  path: ${project_dir}/wl_data/candidates/${candidates.split}.jsonl
 
 hydra:
   run:
