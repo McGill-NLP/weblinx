@@ -46,21 +46,21 @@ excerpt: "Real-world website navigation with multi-turn dialogue"
 <img src="{{ '/assets/images/webnav.demo.svg' | relative_url }}" style="width: 90%; max-width: 900px; align-content: center; margin: auto; display: flex">
 
 
-### About WebLINX
+## About WebLINX
 
 WEBLINX is a large-scale benchmark of 100K interactions across 2300 expert demonstrations of *conversational web navigation*.
 Our benchmark covers a broad range of patterns on over 150 real-world websites and can be used to train and evaluate agents in diverse scenarios.
 
-<img src="{{ '/assets/images/examples/ai.1.oyuiubm.webp' | relative_url }}" width="24%">
-<img src="{{ '/assets/images/examples/booking.1.pxtuocd.webp' | relative_url }}" width="24%">
-<img src="{{ '/assets/images/examples/composing.1.tbtnzql.webp' | relative_url }}" width="24%">
-<img src="{{ '/assets/images/examples/lookup.1.zbrxcee.webp' | relative_url }}" width="24%">
-<img src="{{ '/assets/images/examples/productivity.1.ytcgitj.webp' | relative_url }}" width="24%">
-<img src="{{ '/assets/images/examples/shopping.1.wbamufj.webp' | relative_url }}" width="24%">
-<img src="{{ '/assets/images/examples/social.1.xmrqcyz.webp' | relative_url }}" width="24%">
-<img src="{{ '/assets/images/examples/summarizing.1.bctdmtt.webp' | relative_url }}" width="24%">
+<img loading="lazy" alt="Example of ai tasks" src="{{ '/assets/images/examples/ai.1.oyuiubm.webp' | relative_url }}" width="24%" height="auto">
+<img loading="lazy" alt="Example of booking tasks" src="{{ '/assets/images/examples/booking.1.pxtuocd.webp' | relative_url }}" width="24%" height="auto">
+<img loading="lazy" alt="Example of composing tasks" src="{{ '/assets/images/examples/composing.1.tbtnzql.webp' | relative_url }}" width="24%" height="auto">
+<img loading="lazy" alt="Example of lookup tasks" src="{{ '/assets/images/examples/lookup.1.zbrxcee.webp' | relative_url }}" width="24%" height="auto">
+<img loading="lazy" alt="Example of productivity tasks" src="{{ '/assets/images/examples/productivity.1.ytcgitj.webp' | relative_url }}" width="24%" height="auto">
+<img loading="lazy" alt="Example of shopping tasks" src="{{ '/assets/images/examples/shopping.1.wbamufj.webp' | relative_url }}" width="24%" height="auto">
+<img loading="lazy" alt="Example of social tasks" src="{{ '/assets/images/examples/social.1.xmrqcyz.webp' | relative_url }}" width="24%" height="auto">
+<img loading="lazy" alt="Example of summarizing tasks" src="{{ '/assets/images/examples/summarizing.1.bctdmtt.webp' | relative_url }}" width="24%" height="auto">
 
-### What is *conversational web navigation*?
+## What is *conversational web navigation*?
 
 We propose the problem of *conversational web navigation*, where a digital agent controls a web browser and follows user instructions to solve real-world tasks in a multi-turn dialogue fashion. To accomplish this, agents can learn from expert demonstrations, as shown below:
 
@@ -83,7 +83,7 @@ Here, there should be a 3-column layout with the following content:
 2. The action and conversation history (preferably with nice text formatting)
 3. The screenshot -->
 
-### Can we download WebLINX now?
+## Can we download WebLINX now?
 
 __[You can find our dataset on Huggingface Datasets](https://huggingface.co/datasets/McGill-NLP/weblinx)__
 
@@ -115,7 +115,7 @@ We provide the WebLINX Explorer, a tool to explore the dataset and see the inter
   Your browser does not support the video tag.
 </video>
 
-### What if I want to download the raw data (HTML, screenshots, etc.)?
+## What if I want to download the raw data (HTML, screenshots, etc.)?
 
 If you are interested in the full data, the easiest way to download the raw dataset is the use the `huggingface_hub` library with `snapshot_download`. We show you how in the [doc's prerequisite section]({{'/docs/#prerequisites' | relative_url }}).
 
@@ -130,7 +130,7 @@ pip install weblinx
 Please take a look at the [library documentation]({{'/docs/' | relative_url }}) for more information on how to use it.
 
 
-### How can we use WebLINX to train agents?
+## How can we use WebLINX to train agents?
 
 Our agent is composed of two main components: a __Dense Markup Ranker (DMR)__ and an __action model__.
 
@@ -143,17 +143,17 @@ We experiment with 19 action models, ranging from smaller models (Flan-T5-MindAc
 <!-- There should be a card of 5 models here (MindAct, Pix2Act, Fuyu-8B, LLaMA-13B, GPT-4V) with links to the original papers of those models. -->
 
 
-### Where can we find the finetuned models?
+## Where can we find the finetuned models?
 
 We provide the weights for the models we finetuned. You can [access them on Huggingface Hub](https://huggingface.co/collections/McGill-NLP/weblinx-models-65c57d4afeeb282d1dcf8434). We will share [code to reproduce our experiments on our GitHub repository](https://github.com/mcgill-nlp/weblinx). Please note that they were finetuned for research purposes (so they are not ready for production).
 
-### How do we use the agent to control browsers?
+## How do we use the agent to control browsers?
 
 Our `weblinx` library lets you convert the HTML into a format that can be received by DMR or by an action model, and `weblinx` can also parse valid model outputs into a dictionary that can be converted to browser commands. 
 
 You will need Selenium or Pupeteer to control the browser (take screenshot, grab HTML, insert unique IDs, execute action from dictionary); you can [learn selenium here](https://www.selenium.dev/documentation/webdriver/getting_started/).
 
-### How do we cite WebLINX?
+## How do we cite WebLINX?
 
 If you use our dataset, code, or models, please use the following `bibtex` citation entry:
 
