@@ -11,7 +11,7 @@
 > *[Xing Han Lù*](https://xinghanlu.com), [Zdeněk Kasner*](https://kasnerz.github.io/), [Siva Reddy](https://sivareddy.in)*\
 > _\*Equal contribution_
 
-<img src="./assets/webnav.demo.svg" width="80%" alt="Sample conversation between a user and an agent" />
+<img src="https://github.com/McGill-NLP/weblinx/raw/main/docs/assets/images/webnav.demo.svg" width="80%" alt="Sample conversation between a user and an agent" />
 
 </div>
 

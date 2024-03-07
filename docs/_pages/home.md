@@ -43,7 +43,7 @@ excerpt: "Real-world website navigation with multi-turn dialogue"
 
 <!-- Authors can be improved with pictures similar to /people -->
 
-<img src="{{ '/assets/images/webnav.demo.svg' | relative_url }}" style="width: 90%; max-width: 900px; align-content: center; margin: auto; display: flex">
+<img src="{{ '/assets/images/webnav.demo.svg' | relative_url }}" style="width: 90%; max-width: 900px; align-content: center; margin: auto; display: flex" alt="A diagram displaying a conversation between a navigator and instructor.">
 
 
 ## About WebLINX
@@ -71,7 +71,7 @@ We propose the problem of *conversational web navigation*, where a digital agent
   </video>
 
   <div style="width: 28%;">
-    <img src="{{'/assets/images/booking.1.vcglzhn.messages.webp' | relative_url}}" style="width: 100%; height: auto;">
+    <img src="{{'/assets/images/booking.1.vcglzhn.messages.webp' | relative_url}}" style="width: 100%; height: auto;" alt="A diagram displaying a conversation between a navigator and instructor.">
   </div>
 </div>
 
