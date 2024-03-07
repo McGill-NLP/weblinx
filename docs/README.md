@@ -16,5 +16,5 @@ To convert images to webp, run this from the project root:
 
 ```bash
 # convert docs/assets/images/examples
-python docs/scripts/convert_to_webp.py  -d docs/assets/images/examples
+python docs/scripts/convert_to_webp.py  -d docs/assets/images/examples --height 400
 ```

@@ -51,14 +51,14 @@ excerpt: "Real-world website navigation with multi-turn dialogue"
 WEBLINX is a large-scale benchmark of 100K interactions across 2300 expert demonstrations of *conversational web navigation*.
 Our benchmark covers a broad range of patterns on over 150 real-world websites and can be used to train and evaluate agents in diverse scenarios.
 
-<img src="{{ '/assets/images/examples/ai.1.oyuiubm.png' | relative_url }}" width="24%">
-<img src="{{ '/assets/images/examples/booking.1.pxtuocd.png' | relative_url }}" width="24%">
-<img src="{{ '/assets/images/examples/composing.1.tbtnzql.png' | relative_url }}" width="24%">
-<img src="{{ '/assets/images/examples/lookup.1.zbrxcee.png' | relative_url }}" width="24%">
-<img src="{{ '/assets/images/examples/productivity.1.ytcgitj.png' | relative_url }}" width="24%">
-<img src="{{ '/assets/images/examples/shopping.1.wbamufj.png' | relative_url }}" width="24%">
-<img src="{{ '/assets/images/examples/social.1.xmrqcyz.png' | relative_url }}" width="24%">
-<img src="{{ '/assets/images/examples/summarizing.1.bctdmtt.png' | relative_url }}" width="24%">
+<img src="{{ '/assets/images/examples/ai.1.oyuiubm.webp' | relative_url }}" width="24%">
+<img src="{{ '/assets/images/examples/booking.1.pxtuocd.webp' | relative_url }}" width="24%">
+<img src="{{ '/assets/images/examples/composing.1.tbtnzql.webp' | relative_url }}" width="24%">
+<img src="{{ '/assets/images/examples/lookup.1.zbrxcee.webp' | relative_url }}" width="24%">
+<img src="{{ '/assets/images/examples/productivity.1.ytcgitj.webp' | relative_url }}" width="24%">
+<img src="{{ '/assets/images/examples/shopping.1.wbamufj.webp' | relative_url }}" width="24%">
+<img src="{{ '/assets/images/examples/social.1.xmrqcyz.webp' | relative_url }}" width="24%">
+<img src="{{ '/assets/images/examples/summarizing.1.bctdmtt.webp' | relative_url }}" width="24%">
 
 ### What is *conversational web navigation*?
 
@@ -71,7 +71,7 @@ We propose the problem of *conversational web navigation*, where a digital agent
   </video>
 
   <div style="width: 28%;">
-    <img src="{{'/assets/images/booking.1.vcglzhn.messages.png' | relative_url}}" style="width: 100%; height: auto;">
+    <img src="{{'/assets/images/booking.1.vcglzhn.messages.webp' | relative_url}}" style="width: 100%; height: auto;">
   </div>
 </div>
 
