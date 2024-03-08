@@ -206,13 +206,13 @@ def auto_read_json(path, backend="auto"):
     return data
 
 
-def auto_save_json(data, path, backend="auto", indent=None):
+
+def auto_save_json(data, path, backend="auto", indent=0):
+    if indent is None:
+        indent = 0
+    
     path = str(path)
-    if (
-        backend in ["auto", "orjson"]
-        and find_spec("orjson")
-        and indent not in [2, None]
-    ):
+    if backend in ["auto", "orjson"] and find_spec("orjson") and indent not in [2, 0]:
         import orjson
 
         backend = "orjson"
@@ -236,7 +236,7 @@ def auto_save_json(data, path, backend="auto", indent=None):
     elif backend == "orjson":
         if indent == 2:
             option = orjson.OPT_INDENT_2
-        elif indent is None:
+        elif indent == 0:
             option = None
         else:
             raise ValueError(
