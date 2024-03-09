@@ -157,7 +157,7 @@ def build_formatters():
     return format_intent_input, format_intent_out
 
 
-def turn_has_valid_uid(turn, paths, uid_key="data-weblinx-id"):
+def turn_has_valid_uid(turn, paths, uid_key="data-webtasks-id"):
     """
     Given a turn an lxml tree, return True if the turn's uid is in the tree.
     """
