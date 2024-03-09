@@ -88,7 +88,7 @@ def run_model_and_update_groups(
             r["score"] = scores[i]
 
 
-def build_target_uids_dict(demos, uid_key="data-weblinx-id"):
+def build_target_uids_dict(demos, uid_key="data-webtasks-id"):
     """
     Given a list of demonstrations, build a dictionary mapping
     `(demo_name, turn_index) -> uid`. This is used to determine the
