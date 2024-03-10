@@ -28,9 +28,6 @@ The dataset is quite large, so you might only be interested in a subset of the d
 ```bash
 # 1. Install the library
 pip install huggingface_hub[cli]
-# 2. Request access to the dataset on Huggingface using your account
-# 3. Log in to Huggingface
-huggingface-cli login
 ```
 
 Now, you can download the dataset:
