@@ -35,16 +35,21 @@ Now, you can download the dataset:
 ```python
 from huggingface_hub import snapshot_download
 
-patterns = ["*.json"]
-# Other options: 
-# patterns = ["*.json", "*.html", "*.png", "*.mp4"]
-
-# Download a subset of the dataset, or...
+# You can download specific demos, for example
+demo_names = ['saabwsg', 'ygprzve', 'iqaazif']  # 3 random demo from valid
+patterns = [f"demonstrations/{name}/*" for name in demo_names]
 snapshot_download(
     repo_id="McGill-NLP/WebLINX-full", repo_type="dataset", local_dir="./wl_data", allow_patterns=patterns
 )
 
-# ... download the entire dataset
+
+# ... or download all file of a certain type...
+patterns = ["*.json"]  # alt: ["*.json", "*.html", "*.png", "*.mp4"]
+snapshot_download(
+    repo_id="McGill-NLP/WebLINX-full", repo_type="dataset", local_dir="./wl_data", allow_patterns=patterns
+)
+
+# ... or download the entire dataset.
 snapshot_download(
     repo_id="McGill-NLP/WebLINX-full", repo_type="dataset", local_dir="./wl_data"
 )
@@ -60,14 +65,17 @@ import weblinx as wl
 
 
 wl_dir = Path("./wl_data")
+base_dir = wl_dir / "demonstrations"
 split_path = wl_dir / "splits.json"
 
 # Load the name of the demonstrations in the training split
-demo_names = wl.utils.load_demo_names_in_split(split_path, split='train') 
-# or 'valid' or 'indomain'
+demo_names = wl.utils.load_demo_names_in_split(split_path, split='train')
+# You can use: train, valid, test_iid, test_vis, test_cat, test_geo, test_web
+# Or you can specify the demo_names yourself, such as the ones we just fetched
+demo_names = ['saabwsg', 'ygprzve', 'iqaazif']  # 3 random demo from valid
 
 # Load the demonstrations
-demos = [wl.Demonstration(name, base_dir=wl_dir) for name in names]
+demos = [wl.Demonstration(name, base_dir=base_dir) for name in names]
 
 # Select a demo to work with
 demo = demos[0]
@@ -92,6 +100,59 @@ turns = wl.filter_turns(
         turn.type == "chat" and turn.get("speaker") != "navigator"
     ),
 )
+```
+
+Let's see what it looks like:
+```python
+turns[::2]
+```
+```
+[Turn(index=5, demo_name=saabwsg, base_dir=wl_data/demonstrations),
+ Turn(index=8, demo_name=saabwsg, base_dir=wl_data/demonstrations),
+ Turn(index=12, demo_name=saabwsg, base_dir=wl_data/demonstrations),
+ Turn(index=16, demo_name=saabwsg, base_dir=wl_data/demonstrations),
+ Turn(index=26, demo_name=saabwsg, base_dir=wl_data/demonstrations),
+ Turn(index=31, demo_name=saabwsg, base_dir=wl_data/demonstrations),
+ Turn(index=37, demo_name=saabwsg, base_dir=wl_data/demonstrations),
+ Turn(index=41, demo_name=saabwsg, base_dir=wl_data/demonstrations)]
+```
+
+The `Turn`, `Replay`, `Demonstration` objects are designed to help you access useful parts of the data without too much effort!
+
+For example, the `Turn` object lets you access the HTML, bounding boxes, screenshot, etc.
+```python
+turn = turns[0]
+
+print("HTML sneak peak:", turn.html[:75])
+print("Random Bounding Box:", turn.bboxes['bc7dcf18-542d-48e6'])
+print()
+
+# Optional: We can even get the path to the screenshot and open with Pillow
+# Install Pillow with: pip install Pillow
+from PIL import Image
+Image.open(turn.get_screenshot_path())
+```
+
+The `Replay` object helps with working with turn-level manipulations (you can think of it as a list, and it is indexable and sliceable), whereas `wl.Demonstration` is designed to represent demonstrations at an abstract level.
+
+```python
+print("Description:", demo.form['description'])
+print("Does demo have replay.json?:", demo.has_file('replay.json'))
+print("When was it uploaded?:", demo.get_upload_date())
+print()
+print("Number of turns in replay:", replay.num_turns)
+print("All intents in replay:", replay.list_intents())
+print("Some URLs in replay:", replay.list_urls()[1:3])
+```
+
+```
+Description: Searched in Plos Biology recently published articles and provided summary
+Does demo have replay.json?: True
+When was it uploaded?: 2023-06-14 10:15:59
+
+Number of turns in replay: 48
+All intents in replay: ['scroll', 'click', 'hover', 'paste', 'copy', None, 'tabswitch', 'load', 'tabcreate']
+Some URLs in replay: ['https://journals.plos.org/plosbiology/', 'https://journals.plos.org/plosone/']
 ```
 
 As you can see, the core `weblinx` has many useful functions to process the dataset, as well as various useful classes to represent the data (e.g. `Demonstration`, `Replay`, `Turn`). You can find more information about the library in the [documentation of the core WebLINX module]({{'/docs/core/' | relative_url }}).
