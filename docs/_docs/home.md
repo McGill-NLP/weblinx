@@ -30,28 +30,27 @@ The dataset is quite large, so you might only be interested in a subset of the d
 pip install huggingface_hub[cli]
 ```
 
-Now, you can download the dataset:
+Here's how to use `snapshot_download` to download the dataset:
 
 ```python
-from huggingface_hub import snapshot_download
+from huggingface_hub import snapshot_download...
 
-# You can download specific demos, for example
+# it's possible to download the entire dataset
+snapshot_download(
+    repo_id="McGill-NLP/WebLINX-full", repo_type="dataset", local_dir="./wl_data"
+)
+
+# or you can download specific demos...
 demo_names = ['saabwsg', 'ygprzve', 'iqaazif']  # 3 random demo from valid
 patterns = [f"demonstrations/{name}/*" for name in demo_names]
 snapshot_download(
-    repo_id="McGill-NLP/WebLINX-full", repo_type="dataset", local_dir="./wl_data", allow_patterns=patterns
+    "McGill-NLP/WebLINX-full", "dataset", local_dir="./wl_data", allow_patterns=patterns
 )
 
-
-# ... or download all file of a certain type...
+# ... or download all file of a certain type
 patterns = ["*.json"]  # alt: ["*.json", "*.html", "*.png", "*.mp4"]
 snapshot_download(
-    repo_id="McGill-NLP/WebLINX-full", repo_type="dataset", local_dir="./wl_data", allow_patterns=patterns
-)
-
-# ... or download the entire dataset.
-snapshot_download(
-    repo_id="McGill-NLP/WebLINX-full", repo_type="dataset", local_dir="./wl_data"
+    "McGill-NLP/WebLINX-full", "dataset", local_dir="./wl_data", allow_patterns=patterns
 )
 ```
 
@@ -206,7 +205,8 @@ data_dir = Path("./wl_data")
 split_path = data_dir / "splits.json"
 
 # Load the name of the demonstrations in the training split
-demo_names = wl.utils.load_demo_names_in_split(split_path, split='train')  # or 'valid' or 'test-iid'
+demo_names = wl.utils.load_demo_names_in_split(split_path, split='train')
+# you can also use split='valid' or split='test-iid'
 
 # Load the demonstrations
 demos = [wl.Demonstration(name, base_dir=data_dir) for name in names]
