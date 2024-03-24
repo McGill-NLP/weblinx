@@ -369,7 +369,7 @@ def build_records_for_single_demo(
     format_intent_input,
     max_neg_per_turn=None,
     random_state=None,
-    uid_key="data-weblinx-id",
+    uid_key="data-webtasks-id",
     only_allow_valid_uid=True,
     group_by_turn=False,
 ) -> List[dict]:
