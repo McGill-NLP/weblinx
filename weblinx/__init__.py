@@ -36,7 +36,7 @@ def _validate_json_backend(backend):
 
 
 class Demonstration:
-    def __init__(self, name, base_dir="./demonstrations", json_backend="auto"):
+    def __init__(self, name, base_dir="./demonstrations", json_backend="auto", encoding=None):
         """
         Parameters
         ----------
@@ -52,6 +52,9 @@ class Demonstration:
             'orjson' first, then 'ujson', then 'json'. Both 'orjson' and 'ujson'
             are faster than 'json', but they must be installed first, via
             `pip install orjson` or `pip install ujson`.
+        
+        encoding: str
+            Encoding to use when reading and writing files. If None, it will use the system's default encoding.
         """
         _validate_json_backend(json_backend)
 
@@ -60,6 +63,7 @@ class Demonstration:
         self.json_backend = json_backend
         self.path = Path(base_dir, name)
         self.jsons = {}
+        self.encoding = encoding
 
     def __repr__(self):
         return format_repr(self, "name", "base_dir")
@@ -133,7 +137,7 @@ class Demonstration:
         else:
             return has_correct_files and not self.has_file("invalid.json")
 
-    def load_json(self, filename, backend=None, default=None) -> dict:
+    def load_json(self, filename, backend=None, default=None, encoding=None) -> dict:
         """
         Load a JSON file from the demonstration directory
 
@@ -150,7 +154,14 @@ class Demonstration:
 
         default: Any
             Default value to return if the file does not exist. If None, it will raise an error.
+        
+        encoding: str
+            Encoding to use when reading the file. If None, it will default to the Demonstration's encoding
+            specified in the constructor, or the system's default encoding if it was not specified.
         """
+        if encoding is None:
+            encoding = self.encoding
+        
         if not self.has_file(filename):
             if default is not None:
                 return default
@@ -162,7 +173,7 @@ class Demonstration:
 
         _validate_json_backend(backend)
 
-        results = utils.auto_read_json(self.path / filename, backend=backend)
+        results = utils.auto_read_json(self.path / filename, backend=backend, encoding=encoding)
 
         return results
 
@@ -300,6 +311,7 @@ class Turn(dict):
         demo_name: str,
         base_dir: str,
         json_backend="auto",
+        encoding=None,
     ):
         """
         This class represents a turn in a demonstration, and can be used as a dictionary.
@@ -309,6 +321,7 @@ class Turn(dict):
         self.demo_name = demo_name
         self.base_dir = base_dir
         self.json_backend = json_backend
+        self.encoding = encoding
 
         _validate_json_backend(json_backend)
 
@@ -325,6 +338,7 @@ class Turn(dict):
             index=index,
             demo_name=replay.demo_name,
             base_dir=replay.base_dir,
+            encoding=replay.encoding,
         )
 
     @property
@@ -607,7 +621,7 @@ class Turn(dict):
         if path is None:
             return None
 
-        bboxes = utils.auto_read_json(path, backend=self.json_backend)
+        bboxes = utils.auto_read_json(path, backend=self.json_backend, encoding=self.encoding)
 
         return bboxes
 
@@ -898,6 +912,7 @@ class Turn(dict):
         check_hash=False,
         parser="lxml",
         json_backend="auto",
+        encoding=None,
     ):
         """
         Retrieves the XPaths for elements in the turn's HTML page that match a specified attribute name (uid_key).
@@ -919,12 +934,18 @@ class Turn(dict):
             The parser backend to use for HTML parsing. Currently, only 'lxml' is supported.
         json_backend : str
             The backend to use for loading and saving JSON. If 'auto', chooses the best available option.
-
+        encoding: str
+            Encoding to use when reading the file. If None, it will default to the Demonstration's encoding
+            specified in the constructor, or the system's default encoding if it was not specified.
+        
         Returns
         -------
         dict
             A dictionary mapping unique IDs (from `uid_key`) to their corresponding XPaths in the HTML document.
         """
+        if encoding is None:
+            encoding = self.encoding
+        
         if parser != "lxml":
             raise ValueError(f"Invalid backend '{parser}'. Must be 'lxml'.")
 
@@ -932,7 +953,7 @@ class Turn(dict):
             cache_dir = Path(cache_dir, self.demo_name)
             cache_path = cache_dir / f"xpaths-{self.index}.json"
             if cache_path.exists():
-                result = utils.auto_read_json(cache_path, backend=json_backend)
+                result = utils.auto_read_json(cache_path, backend=json_backend, encoding=encoding)
                 # If the hash is different, then the HTML has changed, so we need to
                 # recompute the XPaths
                 if not check_hash:
@@ -988,7 +1009,7 @@ class Replay:
     then it will contain information about what was said in the chat.
     """
 
-    def __init__(self, replay_json: dict, demo_name: str, base_dir: str):
+    def __init__(self, replay_json: dict, demo_name: str, base_dir: str, encoding=None):
         """
         Represents a replay of a demonstration, encapsulating a sequence of turns (actions and states) within a web session.
 
@@ -1000,10 +1021,13 @@ class Replay:
             The name of the demonstration this replay belongs to.
         base_dir : str
             The base directory where the demonstration data is stored.
+        encoding : str
+            The encoding to use when reading files. If None, it will default to the system's default encoding.
         """
         self.data_dict = replay_json["data"]
         self.demo_name = demo_name
         self.base_dir = str(base_dir)
+        self.encoding = encoding
 
         created = replay_json.get("created", None)
         # TODO: check if this is the correct timestamp
@@ -1029,6 +1053,7 @@ class Replay:
             index=key,
             demo_name=self.demo_name,
             base_dir=self.base_dir,
+            encoding=self.encoding,
         )
 
     def __len__(self):
@@ -1070,6 +1095,7 @@ class Replay:
             replay,
             demo_name=demonstration.name,
             base_dir=demonstration.base_dir,
+            encoding=demonstration.encoding,
         )
 
     @property
