@@ -311,6 +311,7 @@ class Turn(dict):
         demo_name: str,
         base_dir: str,
         json_backend="auto",
+        encoding=None,
     ):
         """
         This class represents a turn in a demonstration, and can be used as a dictionary.
@@ -320,6 +321,7 @@ class Turn(dict):
         self.demo_name = demo_name
         self.base_dir = base_dir
         self.json_backend = json_backend
+        self.encoding = encoding
 
         _validate_json_backend(json_backend)
 
@@ -336,6 +338,7 @@ class Turn(dict):
             index=index,
             demo_name=replay.demo_name,
             base_dir=replay.base_dir,
+            encoding=replay.encoding,
         )
 
     @property
@@ -1006,7 +1009,7 @@ class Replay:
     then it will contain information about what was said in the chat.
     """
 
-    def __init__(self, replay_json: dict, demo_name: str, base_dir: str):
+    def __init__(self, replay_json: dict, demo_name: str, base_dir: str, encoding=None):
         """
         Represents a replay of a demonstration, encapsulating a sequence of turns (actions and states) within a web session.
 
@@ -1018,10 +1021,13 @@ class Replay:
             The name of the demonstration this replay belongs to.
         base_dir : str
             The base directory where the demonstration data is stored.
+        encoding : str
+            The encoding to use when reading files. If None, it will default to the system's default encoding.
         """
         self.data_dict = replay_json["data"]
         self.demo_name = demo_name
         self.base_dir = str(base_dir)
+        self.encoding = encoding
 
         created = replay_json.get("created", None)
         # TODO: check if this is the correct timestamp
@@ -1047,6 +1053,7 @@ class Replay:
             index=key,
             demo_name=self.demo_name,
             base_dir=self.base_dir,
+            encoding=self.encoding,
         )
 
     def __len__(self):
@@ -1088,6 +1095,7 @@ class Replay:
             replay,
             demo_name=demonstration.name,
             base_dir=demonstration.base_dir,
+            encoding=demonstration.encoding,
         )
 
     @property
