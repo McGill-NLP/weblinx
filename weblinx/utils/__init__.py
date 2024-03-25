@@ -174,7 +174,7 @@ def load_demo_names_in_split(
     return demo_names
 
 
-def auto_read_json(path, backend="auto"):
+def auto_read_json(path, backend="auto", encoding=None):
     path = str(path)
     if backend in ["auto", "orjson"] and find_spec("orjson"):
         import orjson
@@ -191,7 +191,7 @@ def auto_read_json(path, backend="auto"):
 
         backend = "json"
 
-    with open(path) as f:
+    with open(path, encoding=encoding) as f:
         if backend == "json":
             data = json.load(f)
         elif backend == "ujson":
