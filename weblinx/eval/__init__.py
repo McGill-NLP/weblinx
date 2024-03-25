@@ -271,8 +271,6 @@ def compute_aggregated_scores(
     if splits is None:
         splits = ("valid", "test_iid", "test_web", "test_geo", "test_vis", "test_cat")
 
-    demos_by_splits = __wl_utils.auto_read_json(split_file)
-
     iterator = tqdm(
         list(itertools.product(project_names, splits)),
         desc="Aggregating scores",
