@@ -60,7 +60,7 @@ Our benchmark covers a broad range of patterns on over 150 real-world websites a
 <img loading="lazy" alt="Example of social tasks" src="{{ '/assets/images/examples/social.1.xmrqcyz.webp' | relative_url }}" width="24%" height="auto">
 <img loading="lazy" alt="Example of summarizing tasks" src="{{ '/assets/images/examples/summarizing.1.bctdmtt.webp' | relative_url }}" width="24%" height="auto">
 
-## What is *conversational web navigation*?
+## *Conversational web navigation*: What is it exactly?
 
 We propose the problem of *conversational web navigation*, where a digital agent controls a web browser and follows user instructions to solve real-world tasks in a multi-turn dialogue fashion. To accomplish this, agents can learn from expert demonstrations, as shown below:
 
