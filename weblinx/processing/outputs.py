@@ -205,7 +205,7 @@ def get_element_info(
     if not uid:
         return None
 
-    xpaths_dict = turn.get_xpaths_dict(cache_dir=cache_dir)
+    xpaths_dict = turn.get_xpaths_dict(cache_dir=cache_dir, uid_key=uid_key)
 
     if len(xpaths_dict) == 0:
         return None
@@ -308,7 +308,7 @@ def infer_element_for_action(intent, args, turn: "Turn", uid_key="data-webtasks-
             uid = None
 
         if uid is not None:
-            element = get_element_info(turn, uid)
+            element = get_element_info(turn, uid, uid_key=uid_key)
 
     return element
 
