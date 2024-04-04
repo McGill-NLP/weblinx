@@ -468,6 +468,8 @@ def format_uid(turn, uid_key="data-webtasks-id", return_as="dict"):
     formatted : str or dict
         A string or dictionary representing the uid.
     """
+    if turn.element is None:
+        raise ValueError(f"format_uid received a turn object with turn.element missing (None): {turn}")
     output = {"uid": turn.element.get("attributes", {}).get(uid_key, None)}
 
     return format_output_dictionary(output, return_as=return_as)
