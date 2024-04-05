@@ -16,6 +16,19 @@ _\*Equal contribution_
 
 </div>
 
+### Intro
+
+Welcome to `WebLINX`'s official repository! In addition to providing code used to train [the models](https://huggingface.co/collections/McGill-NLP/weblinx-models-65c57d4afeeb282d1dcf8434) reported in our [WebLINX paper](https://arxiv.org/abs/2402.05930), we also provide a comprehensive Python library (aka API) to help you work with the [WebLINX dataset](https://huggingface.co/datasets/McGill-NLP/WebLINX). 
+
+If you want to get started with `weblinx`, please check out the following places:
+📓[Colab](https://colab.research.google.com/github/McGill-NLP/weblinx/blob/main/examples/WebLINX_Colab_Notebook.ipynb): Eager to try it out? Start by running this colab notebook!\
+🗄️[Documentation](https://mcgill-nlp.github.io/weblinx/docs/): You can find quickstart instructions, the official user guide, and all relevant API specifications in the docs.\
+🌐[Website](https://mcgill-nlp.github.io/weblinx): If you want a quick overview of the project, this is the best place to start.\
+📄[Paper](https://arxiv.org/abs/2402.05930): If you want to get more in-depth, please read our paper, which provides comprehensive description of the project and report relevant results.\
+🤗[Dataset](https://huggingface.co/datasets/McGill-NLP/WebLINX): The official dataset page, you can download preprocessed dataset and follow instructions to get started.
+
+If you want to learn more about the codebase itself, please keep on reading!
+
 ### Installation
 
 ```bash
@@ -34,10 +47,15 @@ pip install weblinx[video]
 pip install weblinx[dev]
 ```
 
-### Library Usage
+### Structure
 
-Check out our [documentation](https://mcgill-nlp.github.io/weblinx/docs) for more information on how to use WebLINX.
+This repository is structured in the following way:
 
+* `weblinx`: The `__init__.py` provides many useful abstractions to provide a Pythonic experience when working with the dataset. For example, you can use `weblinx.Demonstration` to manipulate a demonstration at a high-level, `weblinx.Replay` to focus on more finegrained details of the demonstration, including iterating over turns, or `weblinx.Turn` to focus on a specific turn. All relevant information is included in the documentations!
+* `weblinx.eval`: Code for evaluating action models trained with WebLINX, it has both `import`able functions/metrics, but can also be accessed via command line
+* `weblinx.processing`: Code for processing various inputs or outputs used by the models, it is extensively used in the models' processing code
+* `weblinx.utils`: Miscellaneous utility functions used across the codebase.
+* `modeling`: This repo-level directory has code for processing, training and evaluating the models reported in the paper (DMR, LLaMA, MindAct, Pix2Act, Flan-T5). It is separate from the `weblinx` library, which focuses on data processing and evaluation. You can use it by cloning this repository, and it is recommended to edit the files in `modeling/` directly for your own needs.
 
 ### Modeling
 
@@ -47,7 +65,7 @@ Our modeling code is separate from the `weblinx` library, but requires it as a d
 # First, install the base package
 pip install weblinx
 
-# THen, clone this repo
+# Then, clone this repo
 git clone https://github.com/McGill-NLP/weblinx
 cd weblinx/modeling
 ```
