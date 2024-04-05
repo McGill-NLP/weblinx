@@ -18,7 +18,21 @@ In this page, you can find documentation about the `WebLINX` Python library we d
 To install the library, you can use pip:
 
 ```bash
+# Basic installation
 pip install weblinx
+
+# Install all dependencies
+pip install weblinx[all]
+
+# Install specific dependencies for...
+# ...processing HTML
+pip install weblinx[processing]
+# ...video processing
+pip install weblinx[video]
+# ...evaluating models
+pip install weblinx[eval]
+# ...development of this library
+pip install weblinx[dev]
 ```
 
 ## Prerequisites
