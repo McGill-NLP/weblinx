@@ -43,7 +43,9 @@ pip install weblinx[all]
 pip install weblinx[processing]
 # ...video processing
 pip install weblinx[video]
-# ...development
+# ...evaluating models
+pip install weblinx[eval]
+# ...development of this library
 pip install weblinx[dev]
 ```
 
