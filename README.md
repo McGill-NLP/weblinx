@@ -20,7 +20,7 @@ _\*Equal contribution_
 
 Welcome to `WebLINX`'s official repository! In addition to providing code used to train [the models](https://huggingface.co/collections/McGill-NLP/weblinx-models-65c57d4afeeb282d1dcf8434) reported in our [WebLINX paper](https://arxiv.org/abs/2402.05930), we also provide a comprehensive Python library (aka API) to help you work with the [WebLINX dataset](https://huggingface.co/datasets/McGill-NLP/WebLINX). 
 
-If you want to get started with `weblinx`, please check out the following places:
+If you want to get started with `weblinx`, please check out the following places:\
 📓[Colab](https://colab.research.google.com/github/McGill-NLP/weblinx/blob/main/examples/WebLINX_Colab_Notebook.ipynb): Eager to try it out? Start by running this colab notebook!\
 🗄️[Documentation](https://mcgill-nlp.github.io/weblinx/docs/): You can find quickstart instructions, the official user guide, and all relevant API specifications in the docs.\
 🌐[Website](https://mcgill-nlp.github.io/weblinx): If you want a quick overview of the project, this is the best place to start.\
