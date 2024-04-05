@@ -1,0 +1,9 @@
+# @package _global_
+project_name: flan
+
+model:
+  name: google/flan-t5-xl
+
+train:
+  batch_size_per_device: 2
+  gradient_accumulation_steps: 8

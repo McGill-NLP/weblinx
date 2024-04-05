@@ -1,0 +1,10 @@
+# @package _global_
+project_name: flan_m2w
+
+data:
+  use_m2w: True
+
+model:
+  size: xl
+  name: osunlp/MindAct_ActionPrediction_flan-t5-${model.size}
+  tokenizer: google/flan-t5-${model.size}

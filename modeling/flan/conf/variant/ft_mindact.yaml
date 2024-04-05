@@ -1,0 +1,14 @@
+# @package _global_
+project_name: flan_m2w
+
+data:
+  use_m2w: True
+
+train:
+  gradient_accumulation_steps: 1
+  batch_size_per_device: 16
+
+model:
+  size: base
+  name: osunlp/MindAct_ActionPrediction_flan-t5-${model.size}
+  tokenizer: google/flan-t5-${model.size}
