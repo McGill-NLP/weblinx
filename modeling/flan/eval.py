@@ -17,7 +17,7 @@ from transformers import (
 from transformers.pipelines.pt_utils import KeyDataset
 from modeling.llama.processing import build_prompt_records_for_llama_truncated
 
-import weblinx as wt
+import weblinx as wl
 from weblinx.processing import load_candidate_elements
 from weblinx.processing.prompt import (
     build_input_records_from_selected_turns,
@@ -55,8 +55,8 @@ def main(cfg):
         tokenizer.model_max_length = cfg.model.max_inp_len
 
     # Data loading
-    demo_names = wt.utils.load_demo_names_in_split(split_path, split=split)
-    demos = [wt.Demonstration(name) for name in demo_names]
+    demo_names = wl.utils.load_demo_names_in_split(split_path, split=split)
+    demos = [wl.Demonstration(name) for name in demo_names]
 
     if cfg.data.use_m2w:
         format_intent = build_formatter_for_m2w()

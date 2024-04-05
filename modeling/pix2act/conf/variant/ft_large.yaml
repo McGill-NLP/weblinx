@@ -1,0 +1,10 @@
+# @package _global_
+model:
+  name: google/pix2struct-large
+
+train:
+  batch_size_per_device: 1
+  gradient_accumulation_steps: 16
+
+eval:
+  batch_size_per_device: 2

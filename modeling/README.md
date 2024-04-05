@@ -204,3 +204,20 @@ python -m modeling.flan.eval -m +variant=ft_mindact model.size=large eval.split=
 python -m modeling.flan.train +variant=ft_mindact_xl
 python -m modeling.flan.eval -m +variant=ft_mindact_xl eval.split=valid,test_iid,test_web,test_geo,test_cat,test_vis
 ```
+
+
+#### Pix2Act
+
+First, you will need to download the tff file for the Arial font (aka `Arial.TFF`) and place it at `${project_dir}/modeling/fonts/Arial.TTF`. On Windows, you can find it at `C:\windows\fonts\`. On Linux, you can find alternative fonts at `/usr/share/fonts/truetype/`.
+
+```bash
+export CUDA_VISIBLE_DEVICES="0" # Set the GPU device you want to use
+
+# Base
+python -m modeling.pix2act.train
+python -m modeling.pix2act.eval eval.split=valid,test_iid,test_web,test_geo,test_cat,test_vis
+
+# Large
+python -m modeling.pix2act.train +variant=ft_large
+python -m modeling.pix2act.eval +variant=ft_large eval.split=valid,test_iid,test_web,test_geo,test_cat,test_vis
+```
