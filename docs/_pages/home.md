@@ -124,7 +124,11 @@ If you are interested in the full data, the easiest way to download the raw data
 If you want to learn the best ways process the raw dataset (prune HTML, format history, add instructions), you can use our `weblinx` Python library. It has tons of classes and functions to help you work with the dataset and build models. You can install it using pip:
 
 ```bash
+# Basic installation
 pip install weblinx
+
+# Install all dependencies (evaluation, processing, etc.)
+pip install weblinx[all]
 ```
 
 Please take a look at the [library documentation]({{'/docs/' | relative_url }}) for more information on how to use it.
