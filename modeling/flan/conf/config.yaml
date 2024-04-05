@@ -1,0 +1,52 @@
+project_dir: ${oc.env:WEBLINX_PROJECT_DIR}
+seed: 123
+project_name: flan
+
+data:
+  num_proc: 8
+  split_path: ${project_dir}/wl_data/splits.json
+  use_m2w: False
+
+train:
+  # default for flan-t5-base and flan-t5-large
+  split: train
+  num_epochs: 5
+  learning_rate: 0.00005
+  batch_size_per_device: 8
+  gradient_accumulation_steps: 2
+  dataloader_num_workers: 8
+  gradient_checkpointing: True
+  warmup_steps: 0
+  scheduler: linear
+  optim: adamw_torch
+
+eval:
+  split: valid
+  batch_size_per_device: 16
+  result_dir: ${project_dir}/results/${project_name}/${eval.split}/${model.name}
+  load_from_save_dir: True  # If True, load from model.save_dir instead of model.name
+
+model:
+  name: google/flan-t5-base
+  tokenizer: ${model.name}
+  max_inp_len: 2048
+  max_out_len: 256
+  save_dir: ${project_dir}/checkpoints/${project_name}/${model.name}
+
+candidates:
+  k: 10
+  model: McGill-NLP/MiniLM-L6-dmr  # unused but potentially useful
+  project_name: dmr  # unused but potentially useful
+  split: ${eval.split}
+  train_path: ${project_dir}/wl_data/candidates/train.jsonl
+  path: ${project_dir}/wl_data/candidates/${candidates.split}.jsonl
+
+hydra:
+  run:
+    dir: ${project_dir}/logs/${project_name}/${hydra.job.name}/${now:%Y-%m-%d-%H:%M:%S}
+  # Use the same for sweep's subdir
+  sweep:
+    dir: ${hydra.run.dir}
+  job:
+    chdir: False
+  verbose: INFO

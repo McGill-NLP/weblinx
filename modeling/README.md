@@ -165,3 +165,59 @@ In this case, `-b` is the base directory for the demonstrations, and `-d` is the
 Behind the scene, this will use the `weblinx.eval.auto_eval_and_save` function to run the evaluation metrics. If you want more control, you can also use that `weblinx.eval.auto_eval_and_save` function directly if you prefer; for an example, check out `weblinx/eval/__main__.py`.
 
 Note that it might be slow the first time you run, because it reads a lot of demonstrations and load millions of files. However, a demo-level cache is automatically created (see `./.cache/demonstrations`), so the next time you run it, it should be much faster.
+
+### More models
+
+#### Flan-T5
+
+```bash
+export CUDA_VISIBLE_DEVICES="0" # Set the GPU device you want to use
+
+# Base
+python -m flan.train
+python -m flan.eval -m eval.split=valid,test_iid,test_web,test_geo,test_cat,test_vis
+
+
+# Large
+python -m modeling.flan.train model.name=google/flan-t5-large
+python -m modeling.flan.eval -m model.name=google/flan-t5-large eval.split=valid,test_iid,test_web,test_geo,test_cat,test_vis
+
+# XL
+python -m modeling.flan.train +variant=ft_xl
+python -m modeling.flan.eval +variant=ft_xl eval.split=valid,test_iid,test_web,test_geo,test_cat,test_vis
+```
+
+#### MindAct
+
+```bash
+export CUDA_VISIBLE_DEVICES="0" # Set the GPU device you want to use
+
+# Base
+python -m modeling.flan.train +variant=ft_mindact model.size=base
+python -m modeling.flan.eval -m +variant=ft_mindact model.size=base eval.split=valid,test_iid,test_web,test_geo,test_cat,test_vis
+
+# Large
+python -m modeling.flan.train +variant=ft_mindact model.size=large
+python -m modeling.flan.eval -m +variant=ft_mindact model.size=large eval.split=valid,test_iid,test_web,test_geo,test_cat,test_vis
+
+# XL
+python -m modeling.flan.train +variant=ft_mindact_xl
+python -m modeling.flan.eval -m +variant=ft_mindact_xl eval.split=valid,test_iid,test_web,test_geo,test_cat,test_vis
+```
+
+
+#### Pix2Act
+
+First, you will need to download the tff file for the Arial font (aka `Arial.TFF`) and place it at `${project_dir}/modeling/fonts/Arial.TTF`. On Windows, you can find it at `C:\windows\fonts\`. On Linux, you can find alternative fonts at `/usr/share/fonts/truetype/`.
+
+```bash
+export CUDA_VISIBLE_DEVICES="0" # Set the GPU device you want to use
+
+# Base
+python -m modeling.pix2act.train
+python -m modeling.pix2act.eval eval.split=valid,test_iid,test_web,test_geo,test_cat,test_vis
+
+# Large
+python -m modeling.pix2act.train +variant=ft_large
+python -m modeling.pix2act.eval +variant=ft_large eval.split=valid,test_iid,test_web,test_geo,test_cat,test_vis
+```

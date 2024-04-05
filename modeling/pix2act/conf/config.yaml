@@ -1,0 +1,45 @@
+project_dir: ${oc.env:WEBLINX_PROJECT_DIR}
+seed: 123
+project_name: pix2act
+
+data:
+  num_proc: 8
+  cache: False  # This will enable or disable completely the cache (read and write)
+  load_from_cache_file: ${data.cache}  # Whether to load the dataset from cache file
+  split_path: ${project_dir}/wl_data/splits.json
+  cache_dir: ${project_dir}/.cache/huggingface/datasets/weblinx/${project_name}
+  cache_filename: dataset_processed.arrow
+  font_path: ${project_dir}/modeling/fonts/Arial.TTF
+
+train:
+  split: train
+  num_epochs: 5
+  batch_size_per_device: 4
+  gradient_accumulation_steps: 8
+  dataloader_num_workers: 8
+  optim: adamw_torch
+  learning_rate: 0.00002
+  warmup_steps: 100
+  scheduler: linear
+
+eval:
+  split: dev
+  batch_size_per_device: 16
+  use_existing_results: False
+  result_dir: ${project_dir}/results/${project_name}/${eval.split}/${model.name}
+
+model:
+  name: google/pix2struct-base
+  max_input_patches: 2048
+  max_out_len: 256
+  save_dir: ${project_dir}/checkpoints/${project_name}/${model.name}
+
+hydra:
+  run:
+    dir: ${project_dir}/logs/${project_name}/${hydra.job.name}/${now:%Y-%m-%d-%H:%M:%S}
+  # Use the same for sweep's subdir
+  sweep:
+    dir: ${hydra.run.dir}
+  job:
+    chdir: False
+  verbose: INFO

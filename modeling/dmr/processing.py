@@ -7,7 +7,7 @@ from functools import partial
 import lxml.html
 import weblinx as wl
 import weblinx.utils.html as wh
-import weblinx.utils.format as wf
+import weblinx.utils.format as wlf
 from weblinx.processing.prompt import (
     format_prev_turns,
     find_turns_with_instructor_chat,
@@ -61,42 +61,42 @@ def format_turn_for_input(
 
 def build_formatters():
     format_element_input = partial(
-        wf.format_element,
+        wlf.format_element,
         include_text=False,
         include_attrs=("class", "title", "href", "aria-label", "d", "src"),
     )
     format_click_input = partial(
-        wf.format_click,
-        formatters=(wf.format_mouse_xy, format_element_input, wf.format_timestamp),
+        wlf.format_click,
+        formatters=(wlf.format_mouse_xy, format_element_input, wlf.format_timestamp),
     )
     format_change_input = partial(
-        wf.format_change,
+        wlf.format_change,
         formatters=(
-            partial(wf.format_arg_item, name="value"),
+            partial(wlf.format_arg_item, name="value"),
             format_element_input,
-            wf.format_timestamp,
+            wlf.format_timestamp,
         ),
     )
     format_hover_input = partial(
-        wf.format_hover,
-        formatters=(wf.format_mouse_xy, format_element_input, wf.format_timestamp),
+        wlf.format_hover,
+        formatters=(wlf.format_mouse_xy, format_element_input, wlf.format_timestamp),
     )
 
     format_submit_input = partial(
-        wf.format_submit, formatters=(format_element_input, wf.format_timestamp)
+        wlf.format_submit, formatters=(format_element_input, wlf.format_timestamp)
     )
 
     format_text_input_input = partial(
-        wf.format_text_input,
+        wlf.format_text_input,
         formatters=(
-            partial(wf.format_arg_item, name="text"),
+            partial(wlf.format_arg_item, name="text"),
             partial(format_element_input),
-            wf.format_timestamp,
+            wlf.format_timestamp,
         ),
     )
 
     format_intent_input = partial(
-        wf.format_intent_automatically,
+        wlf.format_intent_automatically,
         format_click=format_click_input,
         format_change=format_change_input,
         format_hover=format_hover_input,
@@ -107,44 +107,44 @@ def build_formatters():
 
     # second, for the output (prediction text)
     format_element_out = partial(
-        wf.format_element,
+        wlf.format_element,
         # Only want the tag
         include_text=False,
         include_attrs=False,
     )
 
-    format_click_out = partial(wf.format_click, formatters=(wf.format_mouse_xy,))
+    format_click_out = partial(wlf.format_click, formatters=(wlf.format_mouse_xy,))
     format_text_input_out = partial(
-        wf.format_text_input,
+        wlf.format_text_input,
         formatters=(
-            partial(wf.format_arg_item, name="text", max_length=200),
+            partial(wlf.format_arg_item, name="text", max_length=200),
             format_element_out,
-            wf.format_target_bbox,
+            wlf.format_target_bbox,
         ),
     )
     format_change_out = partial(
-        wf.format_change,
+        wlf.format_change,
         formatters=(
-            partial(wf.format_arg_item, name="value", max_length=200),
+            partial(wlf.format_arg_item, name="value", max_length=200),
             format_element_out,
-            wf.format_target_bbox,
+            wlf.format_target_bbox,
         ),
     )
     format_submit_out = partial(
-        wf.format_submit, formatters=(format_element_out, wf.format_target_bbox)
+        wlf.format_submit, formatters=(format_element_out, wlf.format_target_bbox)
     )
     format_load_out = partial(
-        wf.format_load,
+        wlf.format_load,
         include_transition=False,
         include_timestamp=False,
         max_length=200,
     )
-    format_scroll_out = partial(wf.format_scroll, include_timestamp=False)
+    format_scroll_out = partial(wlf.format_scroll, include_timestamp=False)
 
-    format_say_out = partial(wf.format_say, include_timestamp=False)
+    format_say_out = partial(wlf.format_say, include_timestamp=False)
 
     format_intent_out = partial(
-        wf.format_intent_automatically,
+        wlf.format_intent_automatically,
         format_change=format_change_out,
         format_click=format_click_out,
         format_load=format_load_out,
