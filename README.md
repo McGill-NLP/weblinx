@@ -21,12 +21,15 @@ _\*Equal contribution_
 Welcome to `WebLINX`'s official repository! In addition to providing code used to train [the models](https://huggingface.co/collections/McGill-NLP/weblinx-models-65c57d4afeeb282d1dcf8434) reported in our [WebLINX paper](https://arxiv.org/abs/2402.05930), we also provide a comprehensive Python library (aka API) to help you work with the [WebLINX dataset](https://huggingface.co/datasets/McGill-NLP/WebLINX). 
 
 If you want to get started with `weblinx`, please check out the following places:
-| 🌐[Website](https://mcgill-nlp.github.io/weblinx) | If you want a quick overview of the project, this is the best place to start.|
-| :---: | --- |
-| 📓[Colab](https://colab.research.google.com/github/McGill-NLP/weblinx/blob/main/examples/WebLINX_Colab_Notebook.ipynb) | Eager to try it out? Start by running this colab notebook!|
-| 🗄️[Docs](https://mcgill-nlp.github.io/weblinx/docs/)| You can find quickstart instructions, the official user guide, and all relevant API specifications in the docs. |
-| 📄[Paper](https://arxiv.org/abs/2402.05930) | If you want to get more in-depth, please read our paper, which provides comprehensive description of the project and report relevant results.|
-| 🤗[Dataset](https://huggingface.co/datasets/McGill-NLP/WebLINX) | The official dataset page, you can download preprocessed dataset and follow instructions to get started.|
+
+| | | |
+| :---: | :---: | --- |
+| 🌐 | [Website](https://mcgill-nlp.github.io/weblinx) | If you want a quick overview of the project, this is the best place to start.|
+| 📓 | [Colab](https://colab.research.google.com/github/McGill-NLP/weblinx/blob/main/examples/WebLINX_Colab_Notebook.ipynb) | Eager to try it out? Start by running this colab notebook!|
+| 🗄️ | [Docs](https://mcgill-nlp.github.io/weblinx/docs/) | You can find quickstart instructions, the official user guide, and all relevant API specifications in the docs. |
+| 📄 | [Paper](https://arxiv.org/abs/2402.05930) | If you want to get more in-depth, please read our paper, which provides comprehensive description of the project and report relevant results.|
+| 🤗 | [Dataset](https://huggingface.co/datasets/McGill-NLP/WebLINX) | The official dataset page, you can download preprocessed dataset and follow instructions to get started.|
+| | | |
 
 If you want to learn more about the codebase itself, please keep on reading!
 
