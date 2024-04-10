@@ -56,13 +56,13 @@ pip install weblinx[dev]
 ### Structure
 
 This repository is structured in the following way:
-| | |
+
+| Module | Description |
 | --- | --- |
 | `weblinx` | The `__init__.py` provides many useful abstractions to provide a Pythonic experience when working with the dataset. For example, you can use `weblinx.Demonstration` to manipulate a demonstration at a high-level, `weblinx.Replay` to focus on more finegrained details of the demonstration, including iterating over turns, or `weblinx.Turn` to focus on a specific turn. All relevant information is included in the documentations! |
 | `weblinx.eval` | Code for evaluating action models trained with WebLINX, it has both `import`able functions/metrics, but can also be accessed via command line |
 | `weblinx.processing` | Code for processing various inputs or outputs used by the models, it is extensively used in the models' processing code |
 | `weblinx.utils` | Miscellaneous utility functions used across the codebase. |
-| | |
 
 ### Modeling
 
