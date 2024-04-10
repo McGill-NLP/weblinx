@@ -31,7 +31,7 @@ If you want to get started with `weblinx`, please check out the following places
 | 🤗 | [Dataset](https://huggingface.co/datasets/McGill-NLP/WebLINX) | The official dataset page, you can download preprocessed dataset and follow instructions to get started.|
 | | | |
 
-If you want to learn more about the codebase itself, please keep on reading!
+*If you want to learn more about the codebase itself, please keep on reading!*
 
 ### Installation
 
@@ -43,29 +43,30 @@ pip install weblinx
 pip install weblinx[all]
 
 # Install specific dependencies for...
-# ...processing HTML
+# ...processing HTML 🖥️
 pip install weblinx[processing]
-# ...video processing
+# ...video processing 📽️
 pip install weblinx[video]
-# ...evaluating models
+# ...evaluating models 🔬
 pip install weblinx[eval]
-# ...development of this library
+# ...development of this library 🛠️
 pip install weblinx[dev]
 ```
 
 ### Structure
 
 This repository is structured in the following way:
-
-* `weblinx`: The `__init__.py` provides many useful abstractions to provide a Pythonic experience when working with the dataset. For example, you can use `weblinx.Demonstration` to manipulate a demonstration at a high-level, `weblinx.Replay` to focus on more finegrained details of the demonstration, including iterating over turns, or `weblinx.Turn` to focus on a specific turn. All relevant information is included in the documentations!
-* `weblinx.eval`: Code for evaluating action models trained with WebLINX, it has both `import`able functions/metrics, but can also be accessed via command line
-* `weblinx.processing`: Code for processing various inputs or outputs used by the models, it is extensively used in the models' processing code
-* `weblinx.utils`: Miscellaneous utility functions used across the codebase.
-* `modeling`: This repo-level directory has code for processing, training and evaluating the models reported in the paper (DMR, LLaMA, MindAct, Pix2Act, Flan-T5). It is separate from the `weblinx` library, which focuses on data processing and evaluation. You can use it by cloning this repository, and it is recommended to edit the files in `modeling/` directly for your own needs.
+| | |
+| --- | --- |
+| `weblinx` | The `__init__.py` provides many useful abstractions to provide a Pythonic experience when working with the dataset. For example, you can use `weblinx.Demonstration` to manipulate a demonstration at a high-level, `weblinx.Replay` to focus on more finegrained details of the demonstration, including iterating over turns, or `weblinx.Turn` to focus on a specific turn. All relevant information is included in the documentations! |
+| `weblinx.eval` | Code for evaluating action models trained with WebLINX, it has both `import`able functions/metrics, but can also be accessed via command line |
+| `weblinx.processing` | Code for processing various inputs or outputs used by the models, it is extensively used in the models' processing code |
+| `weblinx.utils` | Miscellaneous utility functions used across the codebase. |
+| | |
 
 ### Modeling
 
-Our modeling code is separate from the `weblinx` library, but requires it as a dependency. You can install the modeling code by running:
+Our `modeling/` repo-level directory has code for processing, training and evaluating the models reported in the paper (DMR, LLaMA, MindAct, Pix2Act, Flan-T5). It is separate from the `weblinx` library, which focuses on data processing and evaluation. You can use it by cloning this repository, and it is recommended to edit the files in `modeling/` directly for your own needs. Our modeling code is separate from the `weblinx` library, but requires it as a dependency. You can install the modeling code by running:
 
 ```bash
 # First, install the base package
