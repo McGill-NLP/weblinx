@@ -4,6 +4,7 @@ project_name: dmr
 
 data:
   split_path: ${project_dir}/wl_data/splits.json
+  base_dir: ${project_dir}/wl_data/demonstrations
 
 model:
   name: sentence-transformers/all-MiniLM-L6-v2

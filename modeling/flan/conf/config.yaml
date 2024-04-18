@@ -5,6 +5,7 @@ project_name: flan
 data:
   num_proc: 8
   split_path: ${project_dir}/wl_data/splits.json
+  base_dir: ${project_dir}/wl_data/demonstrations/
   use_m2w: False
 
 train:
