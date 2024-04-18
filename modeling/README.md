@@ -114,6 +114,31 @@ python -m dmr.eval +variant=gte eval.split=test_iid,test_web,test_geo,test_cat,t
 python -m dmr.eval +variant=bge eval.split=test_iid,test_web,test_geo,test_cat,test_vis
 ```
 
+#### Moving generated DMR results to `wl_data/candidates`
+
+The `scores.jsonl` and `results.json` files will be saved at the `cfg.eval.result_dir` variable in `modeling/dmr/conf/config.yml`, which is by default `${project_dir}/results/${project_name}/${model.name}/${eval.split}`, which should by default resolve to `/path/to/weblinx/modeling/results/dmr/sentence-transformers/all-MiniLM-L6-v2/train` for the `train` split, `.../valid` for the valid split, etc. However, since the next steps assumes you have a directory like `wl_data/candidates/<split>.json`, you need to manually move it. For example, you could run:
+
+```bash
+# Change the following paths to match your setup
+orig_dir="/path/to/weblinx/modeling/results/dmr/sentence-transformers/all-MiniLM-L6-v2/"
+
+# This is the directory where the candidates are stored 
+new_dir="/path/to/wl_data/candidates/"
+
+# You need to move the train split if you plan to use it for training the action model
+mv $orig_dir/train/scores.jsonl $new_dir/train.jsonl
+
+# You can move valid and test IID splits as well
+mv $orig_dir/valid/scores.jsonl $new_dir/valid.jsonl
+mv $orig_dir/test_iid/scores.jsonl $new_dir/test_iid.jsonl
+
+# You can move the other OOD test splits as well, after you have run the evaluation
+mv $orig_dir/test_web/scores.jsonl $new_dir/test_web.jsonl
+mv $orig_dir/test_geo/scores.jsonl $new_dir/test_geo.jsonl
+mv $orig_dir/test_cat/scores.jsonl $new_dir/test_cat.jsonl
+mv $orig_dir/test_vis/scores.jsonl $new_dir/test_vis.jsonl
+```
+
 ### Action Model
 
 #### Train LLaMA
