@@ -1,16 +1,16 @@
 ---
-title: "Documentation"
+title: "WebLINX Documentations"
 permalink: /docs/
 sidebar:
   title: "Home"
   nav: sidebar-docs  # See /docs/_data/navigation.yml
 ---
 
+Welcome to the docs for the `weblinx` Python library!
+
 If you want a simple installation, please take a look at the [`WebLINX` Huggingface Dataset](https://huggingface.co/datasets/McGill-NLP/WebLINX) -- it will show you how to download the dataset and use it with the `datasets` library.
 
-If you want to work with the full data (containing raw files, which require more complex processing), you will find that a specialized library will be helpful. 
-
-In this page, you can find documentation about the `WebLINX` Python library we developed for this purpose.
+If you want to work with the full data (containing raw files, which require more complex processing), you will find that a specialized library will be helpful. In this page, you can find documentation about the `WebLINX` Python library we developed for this purpose.
 
 
 ## Installation
@@ -47,7 +47,7 @@ pip install huggingface_hub[cli]
 Here's how to use `snapshot_download` to download the dataset:
 
 ```python
-from huggingface_hub import snapshot_download...
+from huggingface_hub import snapshot_download
 
 # it's possible to download the entire dataset
 snapshot_download(
