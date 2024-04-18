@@ -52,6 +52,7 @@ pip install -r requirements.txt
 
 However, due to `flash-attention` requiring `torch` to be pre-installed, it has to be install right after everything else has been installed:
 ```bash
+pip install wheel
 # Regular install
 pip install "flash-attn>=2.3.0"
 # IF you have limited RAM, you can try this:
@@ -131,6 +132,11 @@ python -m llama.train +variant="ft_2.7b"
 # For 7b, you will need to use fsdp in accelerate to train on 4 GPUs with 48GB VRAM
 export CUDA_VISIBLE_DEVICES="0,1,2,3"
 accelerate launch --use_fsdp --config_file llama/accelerate/fsdp_7b.yaml -m llama.train +variant="ft_7b"
+
+
+# For 7b, you will need to use fsdp in accelerate to train on 4 GPUs with 48GB VRAM
+export CUDA_VISIBLE_DEVICES="4,5,6,7"
+accelerate launch --use_fsdp --config_file llama/accelerate/fsdp_7b.yaml -m llama.train +variant="ft_llama3_8b_instruct"
 
 # For 13b, you need 6 GPUs with 48GB VRAM
 export CUDA_VISIBLE_DEVICES="0,1,2,3,4,5"
