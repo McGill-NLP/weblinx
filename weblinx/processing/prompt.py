@@ -615,6 +615,7 @@ def select_turns_and_candidates_for_prompts(
     demos,
     candidates=None,
     num_candidates=20,
+    remove_turns_without_elements=True,
 ):
     """
     This will select the turns that will be used for building the prompts. It first filters
@@ -635,6 +636,9 @@ def select_turns_and_candidates_for_prompts(
     num_candidates : int, optional
         The number of candidates to select for each turn. Defaults to 20.
 
+    remove_turns_without_elements : bool, optional
+        Whether to remove turns that do not have elements. Defaults to True.
+    
     Returns
     -------
     list
@@ -663,6 +667,14 @@ def select_turns_and_candidates_for_prompts(
                 turn.type == "chat" and turn.get("speaker") != "navigator"
             ),
         )
+        # Remove click and textinput turns where element is None
+        if remove_turns_without_elements:
+            turns = filter_turns(
+                turns,
+                lambda turn: not (
+                    turn.intent in ("click", "change", "textinput", "submit") and turn.element is None
+                ),
+            )
 
         for i, turn in enumerate(turns):
             if candidates is None:
