@@ -120,10 +120,10 @@ The `scores.jsonl` and `results.json` files will be saved at the `cfg.eval.resul
 
 ```bash
 # Change the following paths to match your setup
-orig_dir="/path/to/weblinx/modeling/results/dmr/sentence-transformers/all-MiniLM-L6-v2/"
+orig_dir="/path/to/weblinx/modeling/results/dmr/sentence-transformers/all-MiniLM-L6-v2"
 
 # This is the directory where the candidates are stored 
-new_dir="/path/to/wl_data/candidates/"
+new_dir="/path/to/wl_data/candidates"
 
 # You need to move the train split if you plan to use it for training the action model
 mv $orig_dir/train/scores.jsonl $new_dir/train.jsonl
