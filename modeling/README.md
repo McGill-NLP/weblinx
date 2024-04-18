@@ -60,6 +60,22 @@ MAX_JOBS=4 pip install "flash-attn>=2.3.0" --no-build-isolation
 FLASH_ATTENTION_SKIP_CUDA_BUILD=TRUE pip install "flash-attn>=2.3.0" --no-build-isolation
 ```
 
+### Optional: Symbolic linking to `WebLINX-full`
+
+If you downloaded `WebLINX-full` data in a different location (e.g. different disk) from your `weblinx/modeling` directory, you might consider using symbolic link to avoid having to change the `config.yml` files. You should do something like:
+
+```bash
+ln -s /location/of/your/full/data /location/of/project/weblinx/modeling/wl_data
+```
+
+For example, if your data is located at `/mnt/research/scratch/users/jdoe/WebLINX-full` but your cloned `weblinx` repository is at `~/dev/weblinx`, then you'd run:
+
+```bash
+ln -s /mnt/research/scratch/users/jdoe/WebLINX-full ~/dev/weblinx/modeling/wl_data
+```
+
+Which corresponds to the `data.base_dir` specified in `config.yml`, which is `"${project_dir}/wl_data/demonstrations/"`.
+
 ### Dense Markup Ranking (DMR)
 
 #### Train DMR
@@ -122,7 +138,6 @@ accelerate launch --use_fsdp --config_file llama/accelerate/fsdp_13b.yaml -m lla
 ```
 
 Results will be saved in `./results` and checkpoints in `./checkpoints`.
-
 
 #### Run LLaMA on Evaluation Splits
 
