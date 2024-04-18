@@ -125,13 +125,13 @@ not None, then this will be a random sample of the specified size.
 ### `auto_read_json`
 
 ```
-weblinx.utils.auto_read_json(path, backend="auto")
+weblinx.utils.auto_read_json(path, backend="auto", encoding=None)
 ```
 
 ### `auto_save_json`
 
 ```
-weblinx.utils.auto_save_json(data, path, backend="auto", indent=None)
+weblinx.utils.auto_save_json(data, path, backend="auto", indent=0)
 ```
 
 ### `save_results`
@@ -560,7 +560,7 @@ A string or dictionary representing the timestamp.
 ### `format_change`
 
 ```
-weblinx.utils.format.format_change(turn, formatters=(<_ast.Name object at 0x7feacdfde4c0>, <_ast.Name object at 0x7feacdfde5b0>, <_ast.Name object at 0x7feacdfde5e0>), return_as="dict")
+weblinx.utils.format.format_change(turn, formatters=(<_ast.Name object at 0x7fac2032da60>, <_ast.Name object at 0x7fac2032db50>, <_ast.Name object at 0x7fac2032db80>), return_as="dict")
 ```
 
 #### Description
@@ -577,7 +577,7 @@ when the input is changed, for example, in an input, select or textarea.
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
 | `turn` | `Turn` |  | The turn object to be represented as either a string or a dictionary. |
-| `formatters` | `` | `(<_ast.Name object at 0x7feacdfde4c0>, <_ast.Name object at 0x7feacdfde5b0>, <_ast.Name object at 0x7feacdfde5e0>)` | A tuple of functions to be used to format the turn. The functions will be called in order, and each function should return a dictionary (not a string), which will be merged into the final output. The functions should take the turn as the first argument, and return a dictionary. |
+| `formatters` | `` | `(<_ast.Name object at 0x7fac2032da60>, <_ast.Name object at 0x7fac2032db50>, <_ast.Name object at 0x7fac2032db80>)` | A tuple of functions to be used to format the turn. The functions will be called in order, and each function should return a dictionary (not a string), which will be merged into the final output. The functions should take the turn as the first argument, and return a dictionary. |
 | `return_as` | `str` | `"dict"` | Whether to return the formatted element as a string or a dictionary. |
 
 
@@ -592,7 +592,7 @@ A string or dictionary representing the turn.
 ### `format_click`
 
 ```
-weblinx.utils.format.format_click(turn, formatters=(<_ast.Name object at 0x7feacdfdecd0>, <_ast.Name object at 0x7feacdfdec70>, <_ast.Name object at 0x7feace01d040>), return_as="dict")
+weblinx.utils.format.format_click(turn, formatters=(<_ast.Name object at 0x7fac2032a610>, <_ast.Name object at 0x7fac2032a520>, <_ast.Name object at 0x7fac2032a670>), return_as="dict")
 ```
 
 #### Description
@@ -605,7 +605,7 @@ Format a turn with intent click into a readable format.
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
 | `turn` | `Turn` |  | The turn object to be represented as either a string or a dictionary. |
-| `formatters` | `` | `(<_ast.Name object at 0x7feacdfdecd0>, <_ast.Name object at 0x7feacdfdec70>, <_ast.Name object at 0x7feace01d040>)` | A tuple of functions to be used to format the turn. The functions will be called in order, and each function should return a dictionary (not a string), which will be merged into the final output. The functions should take the turn as the first argument, and return a dictionary. |
+| `formatters` | `` | `(<_ast.Name object at 0x7fac2032a610>, <_ast.Name object at 0x7fac2032a520>, <_ast.Name object at 0x7fac2032a670>)` | A tuple of functions to be used to format the turn. The functions will be called in order, and each function should return a dictionary (not a string), which will be merged into the final output. The functions should take the turn as the first argument, and return a dictionary. |
 | `return_as` | `str` | `"dict"` | Whether to return the formatted element as a string or a dictionary. |
 
 
@@ -678,7 +678,7 @@ A string or dictionary representing the turn.
 ### `format_hover`
 
 ```
-weblinx.utils.format.format_hover(turn, formatters=(<_ast.Name object at 0x7feace004a90>, <_ast.Name object at 0x7feace004ac0>, <_ast.Name object at 0x7feace004af0>), return_as="dict")
+weblinx.utils.format.format_hover(turn, formatters=(<_ast.Name object at 0x7fac20343040>, <_ast.Name object at 0x7fac20343070>, <_ast.Name object at 0x7fac203430a0>), return_as="dict")
 ```
 
 #### Description
@@ -691,7 +691,7 @@ This behaves similarly to format_click, but for hover events.
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
 | `turn` | `Turn` |  | The turn object to be represented as either a string or a dictionary. |
-| `formatters` | `list or tuple` | `(<_ast.Name object at 0x7feace004a90>, <_ast.Name object at 0x7feace004ac0>, <_ast.Name object at 0x7feace004af0>)` | A tuple of functions to be used to format the turn. The functions will be called in order, and each function should return a dictionary (not a string), which will be merged into the final output. The functions should take the turn as the first argument, and return a dictionary. |
+| `formatters` | `list or tuple` | `(<_ast.Name object at 0x7fac20343040>, <_ast.Name object at 0x7fac20343070>, <_ast.Name object at 0x7fac203430a0>)` | A tuple of functions to be used to format the turn. The functions will be called in order, and each function should return a dictionary (not a string), which will be merged into the final output. The functions should take the turn as the first argument, and return a dictionary. |
 | `return_as` | `str` | `"dict"` | Whether to return the formatted element as a string or a dictionary. |
 
 
@@ -807,7 +807,7 @@ Similar to format_mouse_xy, but for scroll events.
 ### `format_submit`
 
 ```
-weblinx.utils.format.format_submit(turn, formatters=(<_ast.Name object at 0x7feace0245b0>, <_ast.Name object at 0x7feace0245e0>), return_as="dict")
+weblinx.utils.format.format_submit(turn, formatters=(<_ast.Name object at 0x7fac20160b20>, <_ast.Name object at 0x7fac20160b50>), return_as="dict")
 ```
 
 #### Description
@@ -820,7 +820,7 @@ Format a turn with intent submit into a readable format.
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
 | `turn` | `Turn` |  | The turn object to be represented as either a string or a dictionary. |
-| `formatters` | `` | `(<_ast.Name object at 0x7feace0245b0>, <_ast.Name object at 0x7feace0245e0>)` | A tuple of functions to be used to format the turn. The functions will be called in order, and each function should return a dictionary (not a string), which will be merged into the final output. The functions should take the turn as the first argument, and return a dictionary. |
+| `formatters` | `` | `(<_ast.Name object at 0x7fac20160b20>, <_ast.Name object at 0x7fac20160b50>)` | A tuple of functions to be used to format the turn. The functions will be called in order, and each function should return a dictionary (not a string), which will be merged into the final output. The functions should take the turn as the first argument, and return a dictionary. |
 | `return_as` | `str` | `"dict"` | Whether to return the formatted element as a string or a dictionary. |
 
 
@@ -837,7 +837,7 @@ Format a turn with intent tabcreate, tabremove or tabswitch into a readable form
 ### `format_text_input`
 
 ```
-weblinx.utils.format.format_text_input(turn, formatters=(<_ast.Name object at 0x7feace033ca0>, <_ast.Name object at 0x7feace033df0>, <_ast.Name object at 0x7feace033f10>), return_as="dict")
+weblinx.utils.format.format_text_input(turn, formatters=(<_ast.Name object at 0x7fac20152220>, <_ast.Name object at 0x7fac20152340>, <_ast.Name object at 0x7fac20152490>), return_as="dict")
 ```
 
 #### Description
@@ -854,7 +854,7 @@ is changed.
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
 | `turn` | `Turn` |  | The turn object to be represented as either a string or a dictionary. |
-| `formatters` | `` | `(<_ast.Name object at 0x7feace033ca0>, <_ast.Name object at 0x7feace033df0>, <_ast.Name object at 0x7feace033f10>)` | A tuple of functions to be used to format the turn. The functions will be called in order, and each function should return a dictionary (not a string), which will be merged into the final output. The functions should take the turn as the first argument, and return a dictionary. |
+| `formatters` | `` | `(<_ast.Name object at 0x7fac20152220>, <_ast.Name object at 0x7fac20152340>, <_ast.Name object at 0x7fac20152490>)` | A tuple of functions to be used to format the turn. The functions will be called in order, and each function should return a dictionary (not a string), which will be merged into the final output. The functions should take the turn as the first argument, and return a dictionary. |
 | `return_as` | `str` | `"dict"` | Whether to return the formatted element as a string or a dictionary. |
 
 
@@ -869,7 +869,7 @@ A string or dictionary representing the turn.
 ### `format_intent_automatically`
 
 ```
-weblinx.utils.format.format_intent_automatically(turn, format_change=<_ast.Name object at 0x7feace039c40>, format_click=<_ast.Name object at 0x7feace039c70>, format_copy=<_ast.Name object at 0x7feace039ca0>, format_hover=<_ast.Name object at 0x7feace039cd0>, format_load=<_ast.Name object at 0x7feace039d00>, format_paste=<_ast.Name object at 0x7feace039d30>, format_say=<_ast.Name object at 0x7feace039d60>, format_scroll=<_ast.Name object at 0x7feace039d90>, format_submit=<_ast.Name object at 0x7feace039dc0>, format_tab=<_ast.Name object at 0x7feace039df0>, format_text_input=<_ast.Name object at 0x7feace039e20>, return_as="dict")
+weblinx.utils.format.format_intent_automatically(turn, format_change=<_ast.Name object at 0x7fac201621f0>, format_click=<_ast.Name object at 0x7fac20162220>, format_copy=<_ast.Name object at 0x7fac20162250>, format_hover=<_ast.Name object at 0x7fac20162280>, format_load=<_ast.Name object at 0x7fac201622b0>, format_paste=<_ast.Name object at 0x7fac201622e0>, format_say=<_ast.Name object at 0x7fac20162310>, format_scroll=<_ast.Name object at 0x7fac20162340>, format_submit=<_ast.Name object at 0x7fac20162370>, format_tab=<_ast.Name object at 0x7fac201623a0>, format_text_input=<_ast.Name object at 0x7fac201623d0>, return_as="dict")
 ```
 
 #### Description
