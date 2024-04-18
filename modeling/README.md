@@ -139,6 +139,15 @@ mv $orig_dir/test_cat/scores.jsonl $new_dir/test_cat.jsonl
 mv $orig_dir/test_vis/scores.jsonl $new_dir/test_vis.jsonl
 ```
 
+Alternatively, you can also update `config.yml` to save the results in the correct directory, by overriding `candidates`:
+```yaml
+# ...
+candidates:
+  # ...
+  model: "sentence-transformers/all-MiniLM-L6-v2"
+  path: ${project_dir}/results/${project_name}/${model.name}/${eval.split}
+```
+
 ### Action Model
 
 #### Train LLaMA
