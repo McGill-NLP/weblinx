@@ -10,6 +10,7 @@ data:
   cache_dir: ${project_dir}/.cache/huggingface/datasets/weblinx/${project_name}
   cache_filename: dataset_processed.arrow
   font_path: ${project_dir}/modeling/fonts/Arial.TTF
+  base_dir: ${project_dir}/wl_data/demonstrations/
 
 train:
   split: train

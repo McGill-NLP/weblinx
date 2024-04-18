@@ -57,7 +57,7 @@ def main(cfg):
 
     # Data loading
     demo_names = wl.utils.load_demo_names_in_split(split_path, split=split)
-    demos = [wl.Demonstration(demo_name) for demo_name in demo_names]
+    demos = [wl.Demonstration(demo_name, base_dir=cfg.data.base_dir) for demo_name in demo_names]
 
     if cfg.project_name.endswith("testing"):
         demos = demos[:10]

@@ -57,7 +57,7 @@ def main(cfg):
     tokenizer = AutoTokenizer.from_pretrained(cfg.model.tokenizer)
 
     demo_names = wl.utils.load_demo_names_in_split(split_path, split=cfg.train.split)
-    demos = [wl.Demonstration(demo_name) for demo_name in demo_names]
+    demos = [wl.Demonstration(demo_name, base_dir=cfg.data.base_dir) for demo_name in demo_names]
     candidates = load_candidate_elements(path=cfg.candidates.train_path)
 
     if cfg.data.use_m2w:

@@ -52,7 +52,7 @@ def main(cfg):
 
     # Data processing
     demo_names = wl.utils.load_demo_names_in_split(split_path, split=cfg.eval.split)
-    demos = [wl.Demonstration(demo_name) for demo_name in demo_names]
+    demos = [wl.Demonstration(demo_name, base_dir=cfg.data.base_dir) for demo_name in demo_names]
     processed_data_records, output_records = extract_and_format_input_and_output(
         demos, return_output_records=True
     )
