@@ -181,6 +181,9 @@ python -m llama.eval +variant="ft_1.3b" eval.split=valid
 
 # On multiple splits (e.g. test_iid, test_vis)
 python -m llama.eval -m +variant="ft_2.7b" eval.split=test_iid,test_web,test_geo,test_cat,test_vis
+
+# Evaluating llama-3-8b-instruct on all splits
+python -m llama.eval -m +variant="ft_llama3_8b_instruct" eval.split=valid,test_iid,test_web,test_geo,test_cat,test_vis
 ```
 
 ### Evaluation
