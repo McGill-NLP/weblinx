@@ -167,8 +167,7 @@ python -m llama.train +variant="ft_2.7b"
 export CUDA_VISIBLE_DEVICES="0,1,2,3"
 accelerate launch --use_fsdp --config_file llama/accelerate/fsdp_7b.yaml -m llama.train +variant="ft_7b"
 
-
-# For 7b, you will need to use fsdp in accelerate to train on 4 GPUs with 48GB VRAM
+# For LLaMA-3-8b-Instruct, you will need to use fsdp in accelerate to train on 4 GPUs with 48GB VRAM
 export CUDA_VISIBLE_DEVICES="4,5,6,7"
 accelerate launch --use_fsdp --config_file llama/accelerate/fsdp_7b.yaml -m llama.train +variant="ft_llama3_8b_instruct"
 
@@ -191,6 +190,9 @@ python -m llama.eval +variant="ft_1.3b" eval.split=valid
 
 # On multiple splits (e.g. test_iid, test_vis)
 python -m llama.eval -m +variant="ft_2.7b" eval.split=test_iid,test_web,test_geo,test_cat,test_vis
+
+# Evaluating llama-3-8b-instruct on all splits
+python -m llama.eval -m +variant="ft_llama3_8b_instruct" eval.split=valid,test_iid,test_web,test_geo,test_cat,test_vis
 ```
 
 ### Evaluation
