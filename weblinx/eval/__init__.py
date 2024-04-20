@@ -133,7 +133,7 @@ def validate_reference_action(ref_action, next_turn, uid_key="data-webtasks-id")
     return True
 
 
-def process_model_results(replays, model_results, model_name=None, verbose=True):
+def process_model_results(replays, model_results, model_name=None, backward_compatible=False, verbose=True):
     """
     Processes the results for a model (i.e. the content of an entire results.json file output by a model).
     """
@@ -145,6 +145,10 @@ def process_model_results(replays, model_results, model_name=None, verbose=True)
         desc = f"Processing results for {model_name}"
     for pred in tqdm(model_results, desc=desc, disable=not verbose):
         demo_name = pred["demo_name"]
+        # If the demo name has an underscore, then we only take the last part, 
+        # as the demos no longer have an author prefix to the name
+        if backward_compatible and "_" in demo_name:
+            demo_name = demo_name.split("_")[-1]
         turn_index = pred["turn_index"]
         replay = replays[demo_name]
         turn = replay[turn_index]
@@ -401,6 +405,7 @@ def auto_eval_and_save(
     processed_fname="processed_results.json",
     score_fname_template="eval_scores.csv",
     split_file=default_split_file,
+    backward_compatible=True,
     check_hashes=True,
 ):
     """
@@ -476,7 +481,7 @@ def auto_eval_and_save(
             logger.info(f"Computing score for [{project} | {model_name} | {split}]")
             print("model_results length:", len(model_results))
             processed_results = process_model_results(
-                replays, model_results, model_name=model_name
+                replays, model_results, model_name=model_name, backward_compatible=backward_compatible
             )
             print("processed_results length:", len(processed_results))
 
