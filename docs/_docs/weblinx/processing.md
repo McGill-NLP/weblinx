@@ -619,7 +619,7 @@ The utterances formatted as a string, or as a list if sep is None.
 ### `format_prev_turns_truncated`
 
 ```
-weblinx.processing.prompt.format_prev_turns_truncated(replay, turn, format_intent, tokenizer, num_tokens_to_remove, format_output_dict_fn=<_ast.Name object at 0x7feace0b3f40>, num_prev_turns=5, turn_sep=" ; ", allow_iterative_reduction=False)
+weblinx.processing.prompt.format_prev_turns_truncated(replay, turn, format_intent, tokenizer, num_tokens_to_remove, format_output_dict_fn=<_ast.Name object at 0x7fac2032a370>, num_prev_turns=5, turn_sep=" ; ", allow_iterative_reduction=False)
 ```
 
 #### Description
@@ -648,7 +648,7 @@ This output of this function should be used by format_utterances to display the 
 ### `multi_attempt_format_prev_turns_truncated`
 
 ```
-weblinx.processing.prompt.multi_attempt_format_prev_turns_truncated(replay, turn, format_intent, tokenizer, max_tokens, num_prev_turns=5, turn_sep=" ; ", max_attempts=5, format_output_dict_fn=<_ast.Name object at 0x7feace024dc0>, warn_after_attempts=True, allow_iterative_reduction=False)
+weblinx.processing.prompt.multi_attempt_format_prev_turns_truncated(replay, turn, format_intent, tokenizer, max_tokens, num_prev_turns=5, turn_sep=" ; ", max_attempts=5, format_output_dict_fn=<_ast.Name object at 0x7fac2034a2b0>, warn_after_attempts=True, allow_iterative_reduction=False)
 ```
 
 #### Description
@@ -737,7 +737,7 @@ The top candidates for the given turn.
 ### `select_turns_and_candidates_for_prompts`
 
 ```
-weblinx.processing.prompt.select_turns_and_candidates_for_prompts(demos, candidates=None, num_candidates=20)
+weblinx.processing.prompt.select_turns_and_candidates_for_prompts(demos, candidates=None, num_candidates=20, remove_turns_without_elements=True)
 ```
 
 #### Description
@@ -756,6 +756,7 @@ for a given turn, then we will find the previous turn that has candidates.
 | `demos` | `list` |  | The list of demonstrations to select the turns from. |
 | `candidates` | `dict` | `None` | The candidates for all turns, as a dictionary of lists. If None, then the candidates will not be used. Defaults to None. |
 | `num_candidates` | `int` | `20` | The number of candidates to select for each turn. Defaults to 20. |
+| `remove_turns_without_elements` | `bool` | `True` | Whether to remove turns that do not have elements. Defaults to True. |
 
 
 #### Returns

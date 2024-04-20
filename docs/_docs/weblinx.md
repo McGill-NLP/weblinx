@@ -19,7 +19,7 @@ Generate a __repr__ method for a class with the given attributes
 ### `Demonstration`
 
 ```
-weblinx.Demonstration(name, base_dir="./demonstrations", json_backend="auto")
+weblinx.Demonstration(name, base_dir="./demonstrations", json_backend="auto", encoding=None)
 ```
 
 #### Description
@@ -33,6 +33,7 @@ weblinx.Demonstration(name, base_dir="./demonstrations", json_backend="auto")
 | `name` | `str` |  | Name of the demonstration directory |
 | `base_dir` | `str` | `"./demonstrations"` | Base directory containing all demonstrations directories |
 | `json_backend` | `str` | `"auto"` | Backend to use to load JSON files. Can be either 'auto', 'json', 'orjson', or 'ujson'. For the 'auto' option, it will try to import 'orjson' first, then 'ujson', then 'json'. Both 'orjson' and 'ujson' are faster than 'json', but they must be installed first, via `pip install orjson` or `pip install ujson`. |
+| `encoding` | `str` | `None` | Encoding to use when reading and writing files. If None, it will use the system's default encoding. |
 
 
 #### `Demonstration.__repr__`
@@ -126,7 +127,7 @@ checking that all required files exist.
 #### `Demonstration.load_json`
 
 ```
-weblinx.Demonstration.load_json(self, filename, backend=None, default=None)
+weblinx.Demonstration.load_json(self, filename, backend=None, default=None, encoding=None)
 ```
 
 ##### Description
@@ -141,6 +142,7 @@ Load a JSON file from the demonstration directory
 | `filename` | `str` |  | Name of the file to load |
 | `backend` | `str` | `None` | Backend to use to load the JSON file. Can be either None, 'auto', 'json', 'orjson', or 'ujson'. If 'auto', it will try to import 'orjson' first, then 'ujson', then 'json'. If None, it will use the json_backend specified in the constructor. |
 | `default` | `Any` | `None` | Default value to return if the file does not exist. If None, it will raise an error. |
+| `encoding` | `str` | `None` | Encoding to use when reading the file. If None, it will default to the Demonstration's encoding specified in the constructor, or the system's default encoding if it was not specified. |
 
 
 #### `Demonstration.save_json`
@@ -254,7 +256,7 @@ html_path = demo.join('pages', 'page-1-0.html')
 ### `Turn`
 
 ```
-weblinx.Turn(turn_dict, index, demo_name, base_dir, json_backend="auto")
+weblinx.Turn(turn_dict, index, demo_name, base_dir, json_backend="auto", encoding=None)
 ```
 
 #### Description
@@ -764,7 +766,7 @@ A string indicating the screenshot status ('good', 'broken', or None).
 #### `Turn.get_xpaths_dict`
 
 ```
-weblinx.Turn.get_xpaths_dict(self, uid_key="data-webtasks-id", cache_dir=None, allow_save=True, check_hash=False, parser="lxml", json_backend="auto")
+weblinx.Turn.get_xpaths_dict(self, uid_key="data-webtasks-id", cache_dir=None, allow_save=True, check_hash=False, parser="lxml", json_backend="auto", encoding=None)
 ```
 
 ##### Description
@@ -785,6 +787,7 @@ before using cached data.
 | `check_hash` | `bool` | `False` | Whether to validate the HTML hash before using cached XPaths. |
 | `parser` | `str` | `"lxml"` | The parser backend to use for HTML parsing. Currently, only 'lxml' is supported. |
 | `json_backend` | `str` | `"auto"` | The backend to use for loading and saving JSON. If 'auto', chooses the best available option. |
+| `encoding` | `str` | `None` | Encoding to use when reading the file. If None, it will default to the Demonstration's encoding specified in the constructor, or the system's default encoding if it was not specified. |
 
 
 ##### Returns
@@ -798,7 +801,7 @@ A dictionary mapping unique IDs (from `uid_key`) to their corresponding XPaths i
 ### `Replay`
 
 ```
-weblinx.Replay(replay_json, demo_name, base_dir)
+weblinx.Replay(replay_json, demo_name, base_dir, encoding=None)
 ```
 
 #### Description
@@ -813,6 +816,7 @@ Represents a replay of a demonstration, encapsulating a sequence of turns (actio
 | `replay_json` | `dict` |  | The JSON object containing the replay data. |
 | `demo_name` | `str` |  | The name of the demonstration this replay belongs to. |
 | `base_dir` | `str` |  | The base directory where the demonstration data is stored. |
+| `encoding` | `str` | `None` | The encoding to use when reading files. If None, it will default to the system's default encoding. |
 
 
 #### `Replay.__getitem__`
