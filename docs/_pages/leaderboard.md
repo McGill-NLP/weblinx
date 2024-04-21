@@ -13,26 +13,28 @@ You can find below the leaderboard for the WebLINX benchmark. It computes the ov
 ## Leaderboard: Action Model
 
 | Model         | Overall |   IM  |  Element (IoU)   | Text (F1)   | Finetuned | Links                             | Tags |
-|---------------|-----------|-------|-------|--------|-----------|------------------------------------------------|------|
-| Llama-2-13B   |  27.86    | 83.07 | 25.79 | 28.77  |    ✔️     | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
-| S-LLaMA-2.7B  |  27.61    | 84.74 | 25.33 | 29.27  |    ✔️     | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
-| Llama-2-7B    |  27.51    | 83.73 | 25.46 | 28.91  |    ✔️     | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
-| S-LLaMA-1.3B  |  25.94    | 84.22 | 23.11 | 27.62  |    ✔️     | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
-| Flan-T5-3B    |  25.25    | 81.61 | 22.18 | 26.41  |    ✔️     | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
-| GPT-3.5F      |  23.35    | 78.52 | 21.19 | 23.84  |    ✔️     | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
-| Fuyu-8B       |  22.29    | 80.96 | 17.85 | 24.57  |    ✔️     | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
-| MindAct-3B    |  21.90    | 80.11 | 17.70 | 23.43  |    ✔️     | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
-| Flan-T5-780M  |  18.56    | 80.40 | 17.36 | 14.47  |    ✔️     | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
-| Pix2Act-1.3B  |  18.44    | 82.12 |  9.36 | 26.69  |    ✔️     | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
-| Flan-T5-250M  |  16.18    | 79.81 | 16.62 |  9.27  |    ✔️     | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
-| MindAct-780M  |  16.03    | 76.31 | 14.75 | 13.68  |    ✔️     | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
-| MindAct-250M  |  13.48    | 74.71 | 13.24 |  7.83  |    ✔️     | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
-| Pix2Act-282M  |  12.47    | 79.87 |  5.93 | 16.58  |    ✔️     | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
-| GPT-4T        |  11.05    | 41.87 | 11.21 |  6.97  |    ❌     | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
-| GPT-4V        |  10.98    | 42.38 | 11.49 |  6.43  |    ❌     | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
-| GPT-3.5T      |   8.89    | 42.70 |  9.05 |  3.56  |    ❌     | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
-| Llama-2-13B   |   5.28    | 43.51 |  4.93 |  1.44  |    ❌     | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
-| Llama-2-7B    |   4.33    | 33.92 |  3.17 |  2.33  |    ❌     | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
+|---------------|---------|-------|------------------|-------------|-----------|-----------------------------------|------|
+| ?????         |  28.88  | 84.36 | 27.44            | 28.88       |    ✔️      | ????                               | EE   |
+| Llama-2-13B   |  25.21  | 81.91 | 22.82            | 26.60       |    ✔️      | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
+| S-LLaMA-2.7B  |  25.02  | 84.00 | 22.60            | 27.17       |    ✔️      | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
+| Llama-2-7B    |  24.57  | 82.64 | 22.26            | 26.50       |    ✔️      | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
+| Flan-T5-3B    |  23.77  | 81.14 | 20.31            | 25.75       |    ✔️      | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
+| S-LLaMA-1.3B  |  23.73  | 83.32 | 20.54            | 25.85       |    ✔️      | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
+| GPT-3.5F      |  21.22  | 77.56 | 18.64            | 22.39       |    ✔️      | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
+| MindAct-3B    |  20.94  | 79.89 | 16.50            | 23.16       |    ✔️      | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
+| Fuyu-8B       |  19.97  | 80.07 | 15.70            | 22.30       |    ✔️      | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
+| Flan-T5-780M  |  17.27  | 80.02 | 15.36            | 14.05       |    ✔️      | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
+| Pix2Act-1.3B  |  16.88  | 81.80 |  8.28            | 25.21       |    ✔️      | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
+| Flan-T5-250M  |  14.99  | 79.69 | 14.86            | 9.21        |    ✔️      | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
+| MindAct-780M  |  15.13  | 75.87 | 13.39            | 13.58       |    ✔️      | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
+| MindAct-250M  |  12.63  | 74.25 | 12.05            | 7.67        |    ✔️      | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
+| Pix2Act-282M  |  12.51  | 79.71 |  6.20            | 16.40       |    ✔️      | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
+| GPT-4T        |  10.72  | 41.66 | 10.85            | 6.75        |    ❌     | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
+| GPT-4V        |  10.45  | 42.36 | 10.91            | 6.21        |    ❌     | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
+| GPT-3.5T      |   8.51  | 42.77 |  8.62            | 3.45        |    ❌     | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
+| Llama-2-13B   |   5.16  | 43.68 |  4.80            | 1.31        |    ❌     | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
+| Llama-2-7B    |   4.04  | 33.96 |  2.92            | 2.14        |    ❌     | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
+
 
 
 ## Leaderboard: Dense Markup Ranker
