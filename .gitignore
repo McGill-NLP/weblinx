@@ -165,3 +165,5 @@ modeling/logs/
 modeling/checkpoints/
 modeling/results/
 modeling/wl_data
+modeling/demonstrations/
+tests/demonstrations/**/
