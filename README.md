@@ -16,7 +16,7 @@ _\*Equal contribution_
 
 </div>
 
-### Intro
+## Intro
 
 Welcome to `WebLINX`'s official repository! In addition to providing code used to train [the models](https://huggingface.co/collections/McGill-NLP/weblinx-models-65c57d4afeeb282d1dcf8434) reported in our [WebLINX paper](https://arxiv.org/abs/2402.05930), we also provide a comprehensive Python library (aka API) to help you work with the [WebLINX dataset](https://huggingface.co/datasets/McGill-NLP/WebLINX). 
 
@@ -33,7 +33,7 @@ If you want to get started with `weblinx`, please check out the following places
 
 *If you want to learn more about the codebase itself, please keep on reading!*
 
-### Installation
+## Installation
 
 ```bash
 # Install the base package
@@ -53,7 +53,7 @@ pip install weblinx[eval]
 pip install weblinx[dev]
 ```
 
-### Structure
+## Structure
 
 This repository is structured in the following way:
 
@@ -64,7 +64,7 @@ This repository is structured in the following way:
 | `weblinx.processing` | Code for processing various inputs or outputs used by the models, it is extensively used in the models' processing code |
 | `weblinx.utils` | Miscellaneous utility functions used across the codebase. |
 
-### Modeling
+## Modeling
 
 Our `modeling/` repo-level directory has code for processing, training and evaluating the models reported in the paper (DMR, LLaMA, MindAct, Pix2Act, Flan-T5). It is separate from the `weblinx` library, which focuses on data processing and evaluation. You can use it by cloning this repository, and it is recommended to edit the files in `modeling/` directly for your own needs. Our modeling code is separate from the `weblinx` library, but requires it as a dependency. You can install the modeling code by running:
 
@@ -79,7 +79,7 @@ cd weblinx/modeling
 
 For the rest of the instructions, please take a look at the [modeling README](./modeling/README.md).
 
-### Evaluation
+## Evaluation
 
 To install packages necessary for evaluation, run:
 
@@ -105,7 +105,7 @@ For more examples on how to use `weblinx.eval`, take a look at the [modeling REA
 
 > Note: We are still working on the code for `weblinx.eval` and `weblinx.processing.outputs`. If you have any questions or would like to contribute docs, please feel free to open an issue or a pull request.
 
-### Citations
+## Citations
 
 If you use this library, please cite our work using the following:
 ```bibtex
@@ -118,3 +118,7 @@ If you use this library, please cite our work using the following:
       primaryClass={cs.CL}
 }
 ```
+
+## License
+
+This project's license can be found at [LICENSE](./LICENSE). Please note that the license of the data in `tests/data` follow the license from the official dataset, not the license of this repository. The official dataset's license can be found in the [official dataset page](https://huggingface.co/datasets/McGill-NLP/WebLINX). The license of the models trained using this repo might also differ - please find them in the respective model cards.
