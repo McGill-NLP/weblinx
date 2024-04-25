@@ -328,7 +328,7 @@ def prune_tree(
 
 
 def clean_and_prune_tree(
-    dom_tree, cands_turn, max_depth=1, max_children=5, max_sibling=2
+    dom_tree, cands_turn=None, candidate_uids=None, max_depth=1, max_children=5, max_sibling=2,
 ):
     """
     This function will clean and prune the tree based on the candidates in the cands_turn. This
@@ -341,7 +341,12 @@ def clean_and_prune_tree(
         The tree to clean and prune.
 
     cands_turn : list
-        The list of candidates for the turn.
+        The list of candidates for the turn. If this is None, we are expected to pass in the
+        `candidate_uids`; otherwise an error will be raised.
+    
+    candidate_uids : list, optional
+        The list of candidate uids to keep. If this is None, we are expected to pass in the
+        `cands_turn`; otherwise an error will be raised.
 
     max_depth : int, optional
         The maximum depth to prune the tree. Defaults to 1.
@@ -360,23 +365,29 @@ def clean_and_prune_tree(
     Raises
     ------
     ValueError
-        If cands_turn is None.
+        If cands_turn is None and candidate_uids is None. Alternatively, if both
+        cands_turn and candidate_uids are passed in, an error will be raised.
     """
-    if cands_turn is None:
+    if cands_turn is None and candidate_uids is None:
         raise ValueError(
-            "cands_turn cannot be None. The dom_tree cannot be pruned this way."
+            "cands_turn or candidate_uids must be provided. The dom_tree cannot be pruned this way."
         )
 
-    if cands_turn is not None:
-        candidate_uids = [cand["uid"] for cand in cands_turn]
-        dom_tree = prune_tree(
-            dom_tree,
-            set(candidate_uids),
-            max_depth=max_depth,
-            max_children=max_children,
-            max_sibling=max_sibling,
+    if cands_turn is not None and candidate_uids is not None:
+        raise ValueError(
+            "cands_turn and candidate_uids cannot both be provided. Please provide only one."
         )
-        remove_uid_when_not_candidate(dom_tree, candidate_uids=candidate_uids)
+    if candidate_uids is None:
+        candidate_uids = [cand["uid"] for cand in cands_turn]
+    
+    dom_tree = prune_tree(
+        dom_tree,
+        set(candidate_uids),
+        max_depth=max_depth,
+        max_children=max_children,
+        max_sibling=max_sibling,
+    )
+    remove_uid_when_not_candidate(dom_tree, candidate_uids=candidate_uids)
 
     remove_html_comments(dom_tree)
     sanitize_elem_attributes(dom_tree)
