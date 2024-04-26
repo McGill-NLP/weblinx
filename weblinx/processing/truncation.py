@@ -530,6 +530,25 @@ def convert_elem_dict_to_str(elem_dict: dict, remove_empty=False):
 
     return element_str
 
+def convert_elem_dict_to_str_dmr(elem_dict: dict):
+    """
+    Convert an element dictionary to a string.
+    """
+    elem_dict = deepcopy(elem_dict)
+
+    element_str = f"[[tag]] {elem_dict.pop('tag')}\n"
+    element_str += f"[[xpath]] {elem_dict.pop('xpath')}\n"
+    element_str += f"[[text]] {elem_dict.pop('text')}\n"
+    element_str += f"[[bbox]] {elem_dict.pop('bbox')}\n"
+    element_str += f"[[attributes]] {elem_dict.pop('attributes')}\n"
+    element_str += f"[[children]] {elem_dict.pop('children')}"
+
+    # for other keys, we just add them to the end
+
+    for k, v in elem_dict.items():
+        element_str += f"\n[[{k}]] {v}"
+
+    return element_str
 
 def truncate_cands_turn(
     cands_turn: list,
