@@ -44,9 +44,9 @@ jobs:
       run: |
         mkdir -p tests/demonstrations
         curl -L -o tests/demonstrations/aaabtsd.zip https://github.com/McGill-NLP/weblinx/releases/download/tests-assets/aaabtsd.zip
-        unzip tests/demonstrations/aaabtsd.zip -d tests/demonstrations
+        unzip -u tests/demonstrations/aaabtsd.zip -d tests/demonstrations
         curl -L -o tests/demonstrations/aajfwoq.zip https://github.com/McGill-NLP/weblinx/releases/download/tests-assets/aajfwoq.zip
-        unzip tests/demonstrations/aajfwoq.zip -d tests/demonstrations
+        unzip -u tests/demonstrations/aajfwoq.zip -d tests/demonstrations
     
     - name: Run tests
       run: |
