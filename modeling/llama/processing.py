@@ -1,3 +1,4 @@
+from copy import deepcopy
 from functools import partial
 from typing import Callable
 
@@ -139,6 +140,8 @@ def build_prompt_records_for_llama_truncated(
     max_candidates_tokens=65 * 10,
     add_unused_len_to_cands=True,
     allow_iterative_reduction=False,
+    use_tokenizer_template=False,
+    template_tokenizer=None,
     parser=None,
 ):
     """
@@ -221,9 +224,22 @@ def build_prompt_records_for_llama_truncated(
             # Add the unused length to the candidates
             num_html_tokens = len(tokenizer.tokenize(html))
             num_utter_tokens = len(tokenizer.tokenize(utterance_context))
-            num_prev_turns_tokens = len(
-                tokenizer.tokenize(" ".join(prev_turns_text_list))
-            )
+            if use_tokenizer_template:
+                if template_tokenizer is None:
+                    raise ValueError(
+                        "template_tokenizer must be provided when use_tokenizer_template is True."
+                    )
+                prev_turns_merged_copy = deepcopy(prev_turns_merged)
+                if prev_turns_merged[0]['role'] == 'assistant':
+                    # insert a dummy user turn
+                    prev_turns_merged_copy.insert(0, {'role': 'user', 'content': ''})
+                num_prev_turns_tokens = len(template_tokenizer.apply_chat_template(
+                    [{'role': 'system', 'content': ''}, *prev_turns_merged_copy], tokenize=True
+                ))
+            else:
+                num_prev_turns_tokens = len(
+                    tokenizer.tokenize(" ".join(prev_turns_text_list))
+                )
             remain_html_tokens = max_html_tokens - num_html_tokens
             remain_utter_tokens = max_utterance_tokens - num_utter_tokens
             remain_prev_turns_tokens = max_prev_turns_tokens - num_prev_turns_tokens

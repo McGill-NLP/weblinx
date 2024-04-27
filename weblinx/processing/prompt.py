@@ -353,9 +353,13 @@ def find_turns_with_instructor_chat(
     This output of this function should be used by format_utterances to display the utterances.
     """
     start_index = max(0, turn.index - num_prev_turns)
-    instructor_chat_turns = replay.filter_turns(
+    lambda_func = (
         lambda turn: turn.get("speaker") == speaker and turn.index < start_index
     )
+    if isinstance(replay, list):
+        instructor_chat_turns = list(filter(lambda_func, replay))
+    else:
+        instructor_chat_turns = replay.filter_turns(lambda_func)
     return instructor_chat_turns
 
 
@@ -638,7 +642,7 @@ def select_turns_and_candidates_for_prompts(
 
     remove_turns_without_elements : bool, optional
         Whether to remove turns that do not have elements. Defaults to True.
-    
+
     Returns
     -------
     list
@@ -672,7 +676,8 @@ def select_turns_and_candidates_for_prompts(
             turns = filter_turns(
                 turns,
                 lambda turn: not (
-                    turn.intent in ("click", "change", "textinput", "submit") and turn.element is None
+                    turn.intent in ("click", "change", "textinput", "submit")
+                    and turn.element is None
                 ),
             )
 
