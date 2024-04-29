@@ -476,7 +476,8 @@ def format_uid(turn, uid_key="data-webtasks-id", return_as="dict"):
 
 
 def format_timestamp(
-    turn,
+    turn=None,
+    timestamp=None,
     start_time=0,
     convert_to_minutes=True,
     time_template="{m:02}:{s:02}",
