@@ -93,7 +93,7 @@ def build_formatters():
     format_text_input_input = partial(
         wlf.format_text_input,
         formatters=(
-            partial(wlf.format_arg_item, name="text"),
+            partial(wlf.format_arg_item, name="text", max_length=500),
             partial(format_element_input),
         ),
     )
@@ -101,13 +101,13 @@ def build_formatters():
         wlf.format_load,
         include_transition=False,
         include_timestamp=False,
-        max_length=200,
+        max_length=500,
     )
     format_scroll_in = partial(wlf.format_scroll, include_timestamp=False)
     format_say_in = partial(wlf.format_say, include_timestamp=False)
 
-    format_copy_input = partial(wlf.format_copy, include_timestamp=False)
-    format_paste_input = partial(wlf.format_paste, include_timestamp=False)
+    format_copy_input = partial(wlf.format_copy, max_length=500, include_timestamp=False)
+    format_paste_input = partial(wlf.format_paste, max_length=500, include_timestamp=False)
     format_tab_input = wlf.format_tab
 
     format_intent_input = partial(
@@ -331,7 +331,7 @@ def format_query_as_rc_records(query):
     for turn in query:
         if turn['intent'] == 'say' and turn['speaker'] == 'instructor':
             role = 'user'
-            content = turn['text']
+            content = turn['utterance']
         else:
             role = 'agent'
             content = wlf.format_output_dictionary(
@@ -388,6 +388,8 @@ def build_dict_for_single_turn(
         return_as=dict
     )
     target_uid = turn.element["attributes"][uid_key] if has_valid_uid else -1
+    if target_uid == -1:
+        logging.warning(f"Turn {turn.index} does not have a valid uid.")
     
     docs = []
 
@@ -397,7 +399,7 @@ def build_dict_for_single_turn(
         elem_str = convert_elem_dict_to_str_legacy(elem_dict)
 
         doc = {
-            "doc_id": f"D-{elem.attrib[uid_key]}",
+            "doc_id": f"D_{elem.attrib[uid_key]}",
             "doc": elem_str,
             "doc_dict": elem_dict,
         }
@@ -407,12 +409,18 @@ def build_dict_for_single_turn(
     query_records = format_query_as_rc_records(query)
 
     out_dict = {
-        "query_id": f"Q-{turn.demo_name}@{turn.index}",
+        "query_id": f"Q_{turn.demo_name}@{turn.index}",
         "query": query_records,
         "query_dict": query,
-        "doc_id": f"D-{target_uid}",
+        "doc_id": f"D_{target_uid}",
         "docs": docs,
     }
+
+    # assert that the target_uid is in the list of uids
+    all_uids = [d["doc_id"] for d in docs]
+    target = out_dict["doc_id"]
+    if target not in all_uids:
+        return None
 
     return out_dict
 
