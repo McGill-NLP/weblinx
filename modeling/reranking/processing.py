@@ -516,6 +516,5 @@ def main(split='valid', result_dir='./reranking_data', demo_base_dir_rel='wl_dat
             # dump the record as a json string
             f.write(json.dumps(demo) + "\n")
 
-    breakpoint()
 if __name__ == "__main__":
     main()
