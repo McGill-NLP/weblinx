@@ -80,7 +80,7 @@ def identity(x):
     return x
 
 
-def format_prev_turns(replay, turn, format_intent, turn_sep=" ; ", num_prev_turns=5):
+def format_prev_turns(replay, turn, format_intent, turn_sep=" ; ", num_prev_turns=5, return_as=str):
     """
     Formats the previous turns (up until but not including `turn`) as a string, or as
     a list if turn_sep is `None`. The previous turns are formatted using the `format_intent`
@@ -106,14 +106,22 @@ def format_prev_turns(replay, turn, format_intent, turn_sep=" ; ", num_prev_turn
     num_prev_turns : int, optional
         The number of previous turns to include. Defaults to 5.
 
+    return_as : str, optional
+        The format to return the previous turns as. If "str", then it will return the previous
+        turns as a string. If "dict", then it will return the previous turns as a list of dictionaries.
+        Defaults to "str".
     Returns
     -------
     str or list
         The previous turns formatted as a string, or as a list if turn_sep is None.
     """
-    start_index = max(0, turn.index - num_prev_turns)
+    if num_prev_turns is None:
+        start_index = 0
+    else:
+        start_index = max(0, turn.index - num_prev_turns)
+        
     prev_turns = replay[start_index : turn.index]
-    prev_turns_formatted = [format_intent(turn, return_as=str) for turn in prev_turns]
+    prev_turns_formatted = [format_intent(turn, return_as=return_as) for turn in prev_turns]
 
     if turn_sep is not None:
         return turn_sep.join(prev_turns_formatted)
