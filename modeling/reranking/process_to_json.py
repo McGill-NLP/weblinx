@@ -489,8 +489,6 @@ def main(split='valid', result_dir='./reranking_data', demo_base_dir_rel='wl_dat
     demo_names = wl.utils.load_demo_names_in_split(split_path, split=split)
     demos = [wl.Demonstration(demo_name, base_dir=base_dir) for demo_name in demo_names]
 
-    demos = demos[:10]
-
     format_intent_input, _ = build_formatters()
     input_records: List[dict] = []
     logging.info(f"Number of demos: {len(demos)}. Starting building records.")
@@ -517,4 +515,13 @@ def main(split='valid', result_dir='./reranking_data', demo_base_dir_rel='wl_dat
             f.write(json.dumps(demo) + "\n")
 
 if __name__ == "__main__":
-    main()
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--splits', nargs='+', default=['valid'])
+    parser.add_argument('--result_dir', type=str, default='./reranking_data')
+    parser.add_argument('--demo_base_dir_rel', type=str, default='wl_data/demonstrations')
+    parser.add_argument('--split_path_rel', type=str, default='wl_data/splits.json')
+    args = parser.parse_args()
+
+    for split in args.splits:
+        main(split=split, result_dir=args.result_dir, demo_base_dir_rel=args.demo_base_dir_rel, split_path_rel=args.split_path_rel)
