@@ -58,14 +58,26 @@ for split in splits:
     # create pandas
     df = pd.DataFrame(data)
 
-    # save as parquet
-    output_path = parquet_dir / f'{split}.parquet'
-    df.to_parquet(output_path)
+    # # save as parquet
+    # output_path = parquet_dir / f'{split}.parquet'
+    # df.to_parquet(output_path)
 
-    print(f"Saved to {output_path}")
+    # print(f"Saved to {output_path}")
 
     # save as jsonl
     output_path = jsonl_dir / f'{split}.jsonl'
     with open(output_path, 'w') as f:
         for d in data:
             f.write(json.dumps(d) + '\n')
+    
+    # save as json.gz
+    json_dir = Path('reranking_data/jsons')
+    json_dir.mkdir(parents=True, exist_ok=True)
+    
+    # save as json.gz using pandas
+    output_path = json_dir / f'{split}.json.gz'
+    df.to_json(output_path, orient='records', lines=True, compression='gzip')
+
+    # save as csv
+    output_path = csv_dir / f'{split}.csv'
+    df.to_csv(output_path, index=False)
