@@ -52,7 +52,7 @@ for split in splits:
         
 
         data.append(
-            {'query_id': r['query_id'], 'query': q, 'positives': positives, 'negatives': negatives, 'query_dict': qd}
+            {'query_id': r['query_id'], 'query': q, 'positive': positives, 'negative': negatives, 'query_dict': qd}
         )
 
     # create pandas

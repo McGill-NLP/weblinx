@@ -24,5 +24,5 @@ api.upload_folder(
     path_in_repo="data/reranking",
     revision=branch,
     folder_path=data_dir,
-    commit_message="Upload reranking data with a query_dict column.",
+    commit_message="Rename columns.",
 )
