@@ -38,8 +38,8 @@ for split in splits:
     data = []
 
     for r in records:
-        q = r['query']
-        q = format_query(q)
+        qd = r['query']
+        q = format_query(qd)
 
         positives = []
         negatives = []
@@ -52,7 +52,7 @@ for split in splits:
         
 
         data.append(
-            {'query_id': r['query_id'], 'query': q, 'positives': positives, 'negatives': negatives}
+            {'query_id': r['query_id'], 'query': q, 'positives': positives, 'negatives': negatives, 'query_dict': qd}
         )
 
     # create pandas
@@ -64,11 +64,11 @@ for split in splits:
 
     # print(f"Saved to {output_path}")
 
-    # save as jsonl
-    output_path = jsonl_dir / f'{split}.jsonl'
-    with open(output_path, 'w') as f:
-        for d in data:
-            f.write(json.dumps(d) + '\n')
+    # # save as jsonl
+    # output_path = jsonl_dir / f'{split}.jsonl'
+    # with open(output_path, 'w') as f:
+    #     for d in data:
+    #         f.write(json.dumps(d) + '\n')
     
     # save as json.gz
     json_dir = Path('reranking_data/jsons')
@@ -78,6 +78,8 @@ for split in splits:
     output_path = json_dir / f'{split}.json.gz'
     df.to_json(output_path, orient='records', lines=True, compression='gzip')
 
-    # save as csv
-    output_path = csv_dir / f'{split}.csv'
-    df.to_csv(output_path, index=False)
+    # # save as csv
+    # output_path = csv_dir / f'{split}.csv'
+    # df.to_csv(output_path, index=False)
+
+    print(f"Finished {split}!")
