@@ -12,5 +12,5 @@ python modeling/reranking/convert_json_to_reranking.py
 
 Upload to huggingface:
 ```bash
-python modeling/reranking/upload_toHf.py
+python modeling/reranking/upload_to_hf.py
 ```
