@@ -14,9 +14,9 @@ snapshot_download(
 
 # candidates files
 snapshot_download(
-    repo_id="McGill-NLP/WebLINX-full", 
-    repo_type="dataset", 
-    allow_patterns="candidates/*.jsonl", 
+    repo_id="McGill-NLP/WebLINX-full",
+    repo_type="dataset",
+    allow_patterns="candidates/*.jsonl",
     local_dir="./wl_data/"
 )
 ```
@@ -72,7 +72,7 @@ ln -s /location/of/your/full/data /location/of/project/weblinx/modeling/wl_data
 For example, if your data is located at `/mnt/research/scratch/users/jdoe/WebLINX-full` but your cloned `weblinx` repository is at `~/dev/weblinx`, then you'd run:
 
 ```bash
-ln -s /mnt/research/scratch/users/jdoe/WebLINX-full ~/dev/weblinx/modeling/wl_data
+ln -s /mnt/research/scratch/users/jdoe/WebLINX-full/* ~/dev/weblinx/modeling/wl_data
 ```
 
 Which corresponds to the `data.base_dir` specified in `config.yml`, which is `"${project_dir}/wl_data/demonstrations/"`.
@@ -122,7 +122,7 @@ The `scores.jsonl` and `results.json` files will be saved at the `cfg.eval.resul
 # Change the following paths to match your setup
 orig_dir="/path/to/weblinx/modeling/results/dmr/sentence-transformers/all-MiniLM-L6-v2"
 
-# This is the directory where the candidates are stored 
+# This is the directory where the candidates are stored
 new_dir="/path/to/wl_data/candidates"
 
 # You need to move the train split if you plan to use it for training the action model
