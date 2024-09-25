@@ -149,7 +149,7 @@ def find_intent_and_raw_args(raw_output_string: str) -> dict:
     
     
 
-def parse_predicted_output_string(raw_output_string: str) -> dict:
+def parse_predicted_output_string(raw_output_string: str, warn_for_unknown=True) -> dict:
     """
     Given an output string, try to find a substring of format <intent>(<key1>=<value1>, <key2>=<value2>, ...) and return a dictionary of format:
     {
@@ -184,7 +184,7 @@ def parse_predicted_output_string(raw_output_string: str) -> dict:
         else:
             intent = Intent.UNKNOWN
 
-    if intent == Intent.UNKNOWN:
+    if warn_for_unknown and intent == Intent.UNKNOWN:
         preview = raw_output_string[:100].replace("\n", "\\n")
         logger.warning(f"Unknown intent '{raw_intent}': {preview}")
 
