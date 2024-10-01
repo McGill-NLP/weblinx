@@ -30,8 +30,14 @@ class LexicalMetric(Metric):
 
     def get_texts(self, pred, ref):
         if pred["intent"] == Intent.TEXT_INPUT:
-            pred_text = pred["args"].get("text")
-            ref_text = ref["args"].get("text")
+            if "text" not in pred["args"]:
+                pred_text = pred["args"].get("value")
+            else:
+                pred_text = pred["args"].get("text")
+            if "text" not in ref["args"]:
+                ref_text = ref["args"].get("value")
+            else:
+                ref_text = ref["args"].get("text")
         elif pred["intent"] == Intent.SAY:
             pred_text = pred["args"].get("utterance")
             ref_text = ref["args"].get("utterance")
@@ -41,7 +47,10 @@ class LexicalMetric(Metric):
         elif pred["intent"] == Intent.CHANGE:
             pred_text = pred["args"].get("value")
             ref_text = ref["args"].get("value")
-
+        else:
+            pred_text = None
+            ref_text = None
+        
         return pred_text, ref_text
 
 
