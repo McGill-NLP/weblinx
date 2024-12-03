@@ -17,6 +17,9 @@ _\*Equal contribution_\
 
 </div>
 
+> [!IMPORTANT] 
+> **WebLINX is now available as a benchmark through [BrowserGym](https://github.com/ServiceNow/BrowserGym), allowing you to access demonstration steps in the same way you would access a web agent environment like [WebArena](https://webarena.dev/) or [MiniWoB](https://miniwob.farama.org/index.html). This also allows you to run agents from the [Agentlab](https://github.com/ServiceNow/AgentLab) library, including agents that achieve SOTA performance through Claude-3.5-Sonnet. To enable this integration, we are releasing the `weblinx-browsergym` extension for BrowserGym on PyPi, as well as a [new dataset derived from WebLINX on Huggingface](https://huggingface.co/datasets/McGill-NLP/weblinx-browsergym).**
+
 ## Intro
 
 Welcome to `WebLINX`'s official repository! In addition to providing code used to train [the models](https://huggingface.co/collections/McGill-NLP/weblinx-models-65c57d4afeeb282d1dcf8434) reported in our [WebLINX paper](https://arxiv.org/abs/2402.05930), we also provide a comprehensive Python library (aka API) to help you work with the [WebLINX dataset](https://huggingface.co/datasets/McGill-NLP/WebLINX). 
