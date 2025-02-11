@@ -14,7 +14,7 @@ You can find below the leaderboard for the WebLINX benchmark. It computes the ov
 
 | Model         | Overall |   IM  |  Element (IoU)   | Text (F1)   | Finetuned | Links                             | Tags |
 |---------------|---------|-------|------------------|-------------|-----------|-----------------------------------|------|
-| ?????         |  28.88  | 84.36 | 27.44            | 28.88       |    ✔️      | ????                               | EE   |
+| Llama-3-8B-Web |  28.88  | 84.36 | 27.44            | 28.88       |    ✔️      | [Page](https://github.com/McGill-NLP/webllama) | EE   |
 | Llama-2-13B   |  25.21  | 81.91 | 22.82            | 26.60       |    ✔️      | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
 | S-LLaMA-2.7B  |  25.02  | 84.00 | 22.60            | 27.17       |    ✔️      | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
 | Llama-2-7B    |  24.57  | 82.64 | 22.26            | 26.50       |    ✔️      | [Code](https://github.com/mcgill-nlp/weblinx) | EE   |
