@@ -1,0 +1,39 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper below."
+title: "WebLINX"
+abstract: "The official WebLINX library: real-world website navigation with multi-turn dialogue."
+authors:
+  - family-names: "Lù"
+    given-names: "Xing Han"
+  - family-names: "Kasner"
+    given-names: "Zdeněk"
+  - family-names: "Reddy"
+    given-names: "Siva"
+version: "0.3.2"
+date-released: "2024-10-01"
+license: Apache-2.0
+repository-code: "https://github.com/McGill-NLP/weblinx"
+url: "https://mcgill-nlp.github.io/weblinx"
+keywords:
+  - web-agents
+  - conversational-web-navigation
+  - multi-turn-dialogue
+  - benchmark
+preferred-citation:
+  type: article
+  title: "WebLINX: Real-World Website Navigation with Multi-Turn Dialogue"
+  authors:
+    - family-names: "Lù"
+      given-names: "Xing Han"
+    - family-names: "Kasner"
+      given-names: "Zdeněk"
+    - family-names: "Reddy"
+      given-names: "Siva"
+  year: 2024
+  journal: "arXiv preprint arXiv:2402.05930"
+  url: "https://arxiv.org/abs/2402.05930"
+  notes: "Published at ICML 2024 (Spotlight). The first two authors contributed equally."
+  identifiers:
+    - type: other
+      value: "arXiv:2402.05930"
+      description: "The arXiv preprint of the paper"
